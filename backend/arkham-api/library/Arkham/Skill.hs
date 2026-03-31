@@ -352,6 +352,14 @@ allSkills = mapFromList $
     , SomeSkillCard armedToTheTeeth
     , SomeSkillCard viciousBlow2
     , SomeSkillCard indomitable3
+    , -- Carolyn Fern
+      SomeSkillCard establishMotive
+    , SomeSkillCard literaryAnalysis
+    , -- Marie Lambeau
+      SomeSkillCard bloodCurse
+    , SomeSkillCard cosmicGuidance
+    , SomeSkillCard eldritchWhispers1
+    , SomeSkillCard bloodCurse3
     , -- André Patel
       --- signature [and]
       SomeSkillCard knowTheExit

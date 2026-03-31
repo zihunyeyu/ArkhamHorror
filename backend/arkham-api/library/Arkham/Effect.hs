@@ -45,6 +45,7 @@ import Arkham.Agenda.Agendas (
  )
 import Arkham.Asset.Assets (
   aceOfRods1Effect,
+  dreamersChronicleEffect,
   arbiterOfFatesEffect,
   armageddon4Effect,
   armageddonEffect,
@@ -136,6 +137,8 @@ import Arkham.Event.Events (
   onTheLamAdvancedEffect,
   oneInTheChamberEffect,
   prestidigitationEffect,
+  mirrorFormEffect,
+  ultimateSacrifice4Effect,
   sleightOfHandEffect,
   snipe1Effect,
   spectralRazor2Effect,
@@ -577,6 +580,7 @@ allEffects =
     , ("54006", SomeEffect wellConnected3Effect)
     , ("60101", SomeEffect nathanielChoEffect)
     , ("60103", SomeEffect tommyMalloyEffect)
+    , ("60255", SomeEffect dreamersChronicleEffect)
     , ("60220", SomeEffect $ noop "60220")
     , ("60232", SomeEffect miskatonicArchaeologyFunding4Effect)
     , ("60301", SomeEffect winifredHabbamockEffect)
@@ -599,6 +603,8 @@ allEffects =
     , ("60430", SomeEffect $ noop "60430")
     , ("60431", SomeEffect $ noop "60431")
     , ("60432", SomeEffect $ noop "60432")
+    , ("60465", SomeEffect mirrorFormEffect)
+    , ("60480", SomeEffect ultimateSacrifice4Effect)
     , ("60512", SomeEffect willToSurviveEffect)
     , ("72002", SomeEffect showbusinessAsUsualEffect)
     , ("81007", SomeEffect cursedShoresEffect)

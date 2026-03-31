@@ -821,6 +821,27 @@ allEvents =
       , SomeEventCard physicalFitness2
       , SomeEventCard stockAmmoReload2
       , SomeEventCard stakeout3
+      , -- Carolyn Fern
+        SomeEventCard causticReaction
+      , SomeEventCard causticReaction2
+      , SomeEventCard unflappable
+      , SomeEventCard unflappable1
+      , SomeEventCard psychoanalysis
+      , SomeEventCard psychoanalysis3
+      , SomeEventCard deEscalate
+      , SomeEventCard insidiousTruths
+      , SomeEventCard hypnotize2
+      , SomeEventCard communeWithTheCosmos5
+      , -- Marie Lambeau
+        SomeEventCard consumeLife
+      , SomeEventCard favorOfBaalshandor
+      , SomeEventCard infuseLife
+      , SomeEventCard mirrorForm
+      , SomeEventCard spiritualCharm
+      , SomeEventCard bloodWard2
+      , SomeEventCard retribution2
+      , SomeEventCard ultimateSacrifice4
+      , SomeEventCard bendBlood5
       , -- André Patel
         SomeEventCard cleanSweep
       , SomeEventCard payYourDues

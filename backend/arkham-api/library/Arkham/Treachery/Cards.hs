@@ -122,6 +122,7 @@ allPlayerTreacheryCards =
       , internalInjury
       , legInjury
       , lostSoul
+      , lethalCuriosity
       , morbidCuriosity
       , narcolepsy
       , nihilism
@@ -186,6 +187,9 @@ allPlayerTreacheryCards =
       , liberOmniumFinium
       , looseCannon
       , overconfident
+      , unbrokenWeb
+      , calledToGuinee
+      , hemophobia
       ]
 
 allEncounterTreacheryCards :: Map CardCode CardDef
@@ -3756,6 +3760,12 @@ thriceDamnedCuriosity =
     { cdCardTraits = singleton Flaw
     }
 
+lethalCuriosity :: CardDef
+lethalCuriosity =
+  (basicWeakness "60254" "Lethal Curiosity")
+    { cdCardTraits = singleton Flaw
+    }
+
 obsessive :: CardDef
 obsessive =
   (basicWeakness "60204" "Obsessive")
@@ -4232,6 +4242,28 @@ overconfident :: CardDef
 overconfident =
   (basicWeakness "60154" "Overconfident")
     { cdCardTraits = singleton Flaw
+    }
+
+unbrokenWeb :: CardDef
+unbrokenWeb =
+  (weakness "60253" "Unbroken Web")
+    { cdCardTraits = setFromList [Terror, Trait.Dreamlands]
+    , cdDeckRestrictions = [Signature ("60251" :: InvestigatorId)]
+    , cdLevel = Nothing
+    }
+
+calledToGuinee :: CardDef
+calledToGuinee =
+  (weakness "60453" "Called to Guin\233e")
+    { cdCardTraits = setFromList [Curse, Pact]
+    , cdDeckRestrictions = [Signature ("60451" :: InvestigatorId)]
+    , cdLevel = Nothing
+    }
+
+hemophobia :: CardDef
+hemophobia =
+  (basicWeakness "60454" "Hemophobia")
+    { cdCardTraits = singleton Terror
     }
 
 confusion :: CardDef

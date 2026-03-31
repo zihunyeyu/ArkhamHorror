@@ -19,6 +19,8 @@ import Arkham.Asset.Cards.TheInnsmouthConspiracy as X
 import Arkham.Asset.Cards.ThePathToCarcosa as X
 import Arkham.Asset.Cards.TheScarletKeys as X
 import Arkham.Asset.Cards.TommyMuldoon2 as X
+import Arkham.Asset.Cards.CarolynFern2 as X
+import Arkham.Asset.Cards.MarieLambeau2 as X
 import Arkham.Card.CardCode
 import Arkham.Card.CardDef
 import Arkham.Prelude
@@ -74,6 +76,7 @@ allPlayerAssetCards =
       , aquinnah3
       , arbiterOfFates
       , arcaneEnlightenment
+      , arcaneExperience4
       , arcaneInitiate
       , arcaneInitiate3
       , arcaneInsight4
@@ -104,6 +107,7 @@ allPlayerAssetCards =
       , astronomicalAtlas3
       , augur
       , augustLindquist
+      , autopsyReport3
       , averyClaypoolAntarcticGuide
       , averyClaypoolAntarcticGuideResolute
       , awakenedMantle
@@ -141,6 +145,7 @@ allPlayerAssetCards =
       , bloodOfThothLawIncarnate
       , bloodPact
       , bloodPact3
+      , bloodstone
       , bloodstainedDagger
       , blur1
       , blur4
@@ -179,6 +184,7 @@ allPlayerAssetCards =
       , catBurglar1
       , catMaskTheCapriciousMeddler
       , celaenoFragments
+      , ceremonialRobes1
       , ceremonialSickle
       , ceremonialSickle4
       , chainsaw4
@@ -293,6 +299,8 @@ allPlayerAssetCards =
       , dreamDiaryDreamsOfAChild3
       , dreamDiaryDreamsOfAMadman3
       , dreamDiaryDreamsOfAnExplorer3
+      , dreadCurseOfAzathoth3
+      , dreamersChronicle
       , dreamEnhancingSerum
       , drDewiIrawanCryptozoologist
       , drElliHorowitz
@@ -345,6 +353,7 @@ allPlayerAssetCards =
       , esotericAtlas2
       , esotericFormula
       , evanescentAscensionTheMorningStar
+      , experimentalPsychology
       , expeditedTicket
       , expeditionJournal
       , eyeOfChaos
@@ -414,6 +423,7 @@ allPlayerAssetCards =
       , giftOfNodens5
       , gildedVolto
       , girishKadakiaIcpcPunjabDetective4
+      , grandMeresCharm
       , grannyOrne
       , grannyOrne3
       , grapplingHook
@@ -509,6 +519,7 @@ allPlayerAssetCards =
       , jeromeDavids
       , jessicaHyde1
       , jewelOfAureolus3
+      , jimCulver4
       , jimCulverHauntedMusician
       , jimsTrumpet
       , jimsTrumpetAdvanced
@@ -645,10 +656,12 @@ allPlayerAssetCards =
       , obsidianBracelet
       , occultLexicon
       , occultLexicon3
+      , occultRecords
       , occultReliquary3
       , occultScraps
       , oculaObscuraEsotericEyepiece
       , oculusMortuum
+      , offeringBowl
       , ofuda
       , oldBookOfLore
       , oldBookOfLore3
@@ -701,6 +714,7 @@ allPlayerAssetCards =
       , priestOfTwoFaiths1
       , prismaticShardAlienMeteorite
       , prismaticSpectaclesLensToTheOtherworld2
+      , privatePractice
       , profaneIdol
       , professorWarrenRice
       , professorWilliamDyerProfessorOfGeology
@@ -709,6 +723,7 @@ allPlayerAssetCards =
       , professorWilliamWebbFinderOfHiddenConnections2
       , prophesiaeProfanaAtlasOfTheUnknowable5
       , prophetic3
+      , psychologyStudent
       , protectiveGear2
       , protectiveVest
       , protectiveVest4
@@ -749,6 +764,7 @@ allPlayerAssetCards =
       , riteOfSeeking2
       , riteOfSeeking4
       , ritualCandles
+      , ritualDagger3
       , roaldEllsworthIntrepidExplorer
       , roaldEllsworthIntrepidExplorerResolute
       , robertCastaigneHasYourBack
@@ -763,6 +779,7 @@ allPlayerAssetCards =
       , rookieCop
       , runicAxe
       , ruthWestmacottDarkRevelations
+      , sacrificialDoll
       , sacredCovenant2
       , sacredOathOathOfLoyalty5
       , sacredOathOathOfOrder5
@@ -785,18 +802,26 @@ allPlayerAssetCards =
       , scrollOfSecrets
       , scrollOfSecretsMystic3
       , scrollOfSecretsSeeker3
+      , scrollOfThePharaohs
+      , scrollOfThePharaohsWordsOfBast4
+      , scrollOfThePharaohsWordsOfRa4
+      , scrollOfThePharaohsWordsOfSet4
       , scrying
       , scrying3
       , scryingMirror
       , seaChangeHarpoon
       , sealOfTheSeventhSign5
       , secondSight
+      , secondSight5
       , segmentOfOnyx1
       , sergeantMonroe
       , servantOfBrassDaemonaicVassal
       , serviceRevolver
+      , shadowmeld
+      , shadowmeld5
       , shardsOfTheVoid3
       , sharpRhetoric
+      , sharpRhetoric3
       , sharpshooter3
       , shieldOfFaith2
       , shiningTrapezohedron4
@@ -843,6 +868,7 @@ allPlayerAssetCards =
       , spiritSpeaker
       , spiritualHealing4
       , spiritualIntuition
+      , spiritualIntuition3
       , spiritualResolve5
       , splitTheAngleIreOfTheVoid
       , springfieldM19034
@@ -960,6 +986,7 @@ allPlayerAssetCards =
       , trustyBullwhipAdvanced
       , tryAndTryAgain1
       , tryAndTryAgain3
+      , typewriter2
       , twentyFiveAutomatic
       , twentyFiveAutomatic2
       , twilaKatherinePrice3
@@ -968,6 +995,7 @@ allPlayerAssetCards =
       , uncannySpecimen
       , underworldMarket2
       , underworldSupport
+      , universityArchivist
       , unscrupulousLoan3
       , untilTheEndOfTime
       , valentinoRivas

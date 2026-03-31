@@ -169,6 +169,12 @@ allPlayerSkillCards =
       , adaptAndOvercome
       , armedToTheTeeth
       , indomitable3
+      , establishMotive
+      , literaryAnalysis
+      , bloodCurse
+      , cosmicGuidance
+      , eldritchWhispers1
+      , bloodCurse3
       , watchThis
       , watchThis3
       , wellDressed
@@ -191,7 +197,7 @@ deduction :: CardDef
 deduction =
   (skill "01039" "Deduction" [#intellect] Seeker)
     { cdCardTraits = setFromList [Practiced]
-    , cdAlternateCardCodes = ["01539", "60219", "12039"]
+    , cdAlternateCardCodes = ["01539", "60219", "12039", "60267"]
     }
 
 opportunist :: CardDef
@@ -268,6 +274,7 @@ deduction2 =
   (skill "02150" "Deduction" [#intellect, #intellect] Seeker)
     { cdCardTraits = setFromList [Practiced, Expert]
     , cdLevel = Just 2
+    , cdAlternateCardCodes = ["60275"]
     }
 
 defiance :: CardDef
@@ -419,6 +426,7 @@ torrentOfPower :: CardDef
 torrentOfPower =
   (skill "03235" "Torrent of Power" [#wild] Mystic)
     { cdCardTraits = singleton Practiced
+    , cdAlternateCardCodes = ["60469"]
     }
 
 notWithoutAFight :: CardDef
@@ -1292,5 +1300,46 @@ indomitable3 :: CardDef
 indomitable3 =
   (skill "60180" "Indomitable" [#combat, #wild, #willpower] Guardian)
     { cdCardTraits = setFromList [Innate, Developed]
+    , cdLevel = Just 3
+    }
+
+establishMotive :: CardDef
+establishMotive =
+  (skill "60268" "Establish Motive" [#wild] Seeker)
+    { cdCardTraits = singleton Practiced
+    }
+
+literaryAnalysis :: CardDef
+literaryAnalysis =
+  (skill "60269" "Literary Analysis" [#intellect, #intellect] Seeker)
+    { cdCardTraits = singleton Practiced
+    }
+
+bloodCurse :: CardDef
+bloodCurse =
+  (skill "60467" "Blood Curse" [#wild, #wild, #wild, #wild] Mystic)
+    { cdCardTraits = setFromList [Spell, Cursed]
+    , cdCommitRestrictions = [MaxOnePerTest]
+    }
+
+cosmicGuidance :: CardDef
+cosmicGuidance =
+  (skill "60468" "Cosmic Guidance" [#willpower] Mystic)
+    { cdCardTraits = singleton Augury
+    }
+
+eldritchWhispers1 :: CardDef
+eldritchWhispers1 =
+  (skill "60471" "Eldritch Whispers" [#wild, #wild] Mystic)
+    { cdCardTraits = singleton Innate
+    , cdCommitRestrictions = [MaxOnePerTest]
+    , cdLevel = Just 1
+    }
+
+bloodCurse3 :: CardDef
+bloodCurse3 =
+  (skill "60477" "Blood Curse" [#wild, #wild, #wild, #wild, #wild] Mystic)
+    { cdCardTraits = setFromList [Spell, Cursed]
+    , cdCommitRestrictions = [MaxOnePerTest]
     , cdLevel = Just 3
     }

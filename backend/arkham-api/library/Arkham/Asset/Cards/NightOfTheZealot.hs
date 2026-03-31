@@ -202,7 +202,7 @@ magnifyingGlass1 =
       , cdCardTraits = setFromList [Item, Tool]
       , cdLevel = Just 1
       , cdSlots = [#hand]
-      , cdAlternateCardCodes = ["01540"]
+      , cdAlternateCardCodes = ["01540", "60270"]
       }
 
 discOfItzamna2 :: CardDef
@@ -353,7 +353,7 @@ arcaneInitiate =
     { cdSkills = [#willpower]
     , cdCardTraits = setFromList [Ally, Sorcerer]
     , cdSlots = [#ally]
-    , cdAlternateCardCodes = ["01563"]
+    , cdAlternateCardCodes = ["01563", "60455"]
     }
 
 bookOfShadows3 :: CardDef

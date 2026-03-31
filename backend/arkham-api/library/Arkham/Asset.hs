@@ -1519,6 +1519,34 @@ allAssets =
       , SomeAssetCard endurance3
       , SomeAssetCard protectiveVest4
       , SomeAssetCard thompsonSubmachineGun5
+      , -- Carolyn Fern
+        SomeAssetCard experimentalPsychology
+      , SomeAssetCard dreamersChronicle
+      , SomeAssetCard occultRecords
+      , SomeAssetCard privatePractice
+      , SomeAssetCard psychologyStudent
+      , SomeAssetCard scrollOfThePharaohs
+      , SomeAssetCard universityArchivist
+      , SomeAssetCard typewriter2
+      , SomeAssetCard autopsyReport3
+      , SomeAssetCard sharpRhetoric3
+      , SomeAssetCard scrollOfThePharaohsWordsOfBast4
+      , SomeAssetCard scrollOfThePharaohsWordsOfRa4
+      , SomeAssetCard scrollOfThePharaohsWordsOfSet4
+      , -- Marie Lambeau
+        SomeAssetCard grandMeresCharm
+      , SomeAssetCard offeringBowl
+      , SomeAssetCard bloodstone
+      , SomeAssetCard sacrificialDoll
+      , SomeAssetCard shadowmeld
+      , SomeAssetCard ceremonialRobes1
+      , SomeAssetCard dreadCurseOfAzathoth3
+      , SomeAssetCard ritualDagger3
+      , SomeAssetCard spiritualIntuition3
+      , SomeAssetCard arcaneExperience4
+      , SomeAssetCard jimCulver4
+      , SomeAssetCard secondSight5
+      , SomeAssetCard shadowmeld5
       , -- André Patel
         SomeAssetCard centerStage
       , SomeAssetCard fame

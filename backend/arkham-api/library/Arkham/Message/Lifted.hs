@@ -99,6 +99,7 @@ import Arkham.Queue
 import Arkham.RequestedChaosTokenStrategy
 import Arkham.Scenario.Deck
 import Arkham.Search qualified as Search
+import Arkham.SkillTest.Step
 import Arkham.SkillType
 import Arkham.SkillType qualified as SkillType
 import Arkham.Source
@@ -1710,6 +1711,29 @@ modifyCurrentSkillTest
 modifyCurrentSkillTest (toSource -> source) x =
   Msg.withSkillTest \sid -> skillTestModifier sid source sid x
 
+modifySkill
+  :: forall target source m
+   . (ReverseQueue m, Sourceable source, Targetable target)
+  => SkillTestId
+  -> source
+  -> target
+  -> SkillType
+  -> Int
+  -> m ()
+modifySkill sid (toSource -> source) (toTarget -> target) sType n =
+  skillTestModifier sid source target (SkillModifier sType n)
+
+addSkillValue
+  :: forall target source m
+   . (ReverseQueue m, Sourceable source, Targetable target)
+  => SkillTestId
+  -> source
+  -> target
+  -> SkillType
+  -> m ()
+addSkillValue sid (toSource -> source) (toTarget -> target) sType =
+  skillTestModifier sid source target (AddSkillValue sType)
+
 skillTestModifier
   :: forall target source m
    . (ReverseQueue m, Sourceable source, Targetable target)
@@ -1720,6 +1744,40 @@ skillTestModifier
   -> m ()
 skillTestModifier sid (toSource -> source) (toTarget -> target) x =
   Msg.pushM $ Msg.skillTestModifier sid source target x
+
+thisSkillTestModifier
+  :: ( ReverseQueue m
+     , Sourceable source
+     , AsId investigator
+     , IdOf investigator ~ InvestigatorId
+     , Targetable target
+     )
+  => investigator
+  -> source
+  -> target
+  -> ModifierType
+  -> m ()
+thisSkillTestModifier investigator source target x = do
+  getSkillTestId >>= \case
+    Just sid -> skillTestModifier sid source target x
+    Nothing -> Msg.pushM $ Msg.nextSkillTestModifier investigator source target x
+
+thisSkillTestModifiers
+  :: ( ReverseQueue m
+     , Sourceable source
+     , AsId investigator
+     , IdOf investigator ~ InvestigatorId
+     , Targetable target
+     )
+  => investigator
+  -> source
+  -> target
+  -> [ModifierType]
+  -> m ()
+thisSkillTestModifiers investigator source target xs = do
+  getSkillTestId >>= \case
+    Just sid -> skillTestModifiers sid source target xs
+    Nothing -> Msg.pushM $ Msg.nextSkillTestModifiers investigator source target xs
 
 nextSkillTestModifier
   :: ( ReverseQueue m
@@ -1734,9 +1792,7 @@ nextSkillTestModifier
   -> ModifierType
   -> m ()
 nextSkillTestModifier investigator source target x = do
-  getSkillTestId >>= \case
-    Just sid -> skillTestModifier sid source target x
-    Nothing -> Msg.pushM $ Msg.nextSkillTestModifier investigator source target x
+  nextSkillTestModifiers investigator source target [x]
 
 nextSkillTestModifiers
   :: ( ReverseQueue m
@@ -1751,9 +1807,12 @@ nextSkillTestModifiers
   -> [ModifierType]
   -> m ()
 nextSkillTestModifiers investigator source target xs = do
-  getSkillTestId >>= \case
-    Just sid -> skillTestModifiers sid source target xs
-    Nothing -> Msg.pushM $ Msg.nextSkillTestModifiers investigator source target xs
+  let def = Msg.pushM $ Msg.nextSkillTestModifiers investigator source target xs
+  getSkillTest >>= \case
+    Just st
+      | st.step <= DetermineSuccessOrFailureOfSkillTestStep ->
+          skillTestModifiers st.id source target xs
+    _ -> def
 
 searchModifier
   :: forall target source m
@@ -1851,6 +1910,10 @@ chooseEvadeEnemy
   :: (ReverseQueue m, Sourceable source) => SkillTestId -> InvestigatorId -> source -> m ()
 chooseEvadeEnemy sid iid = mkChooseEvade sid iid >=> push . toMessage
 
+chooseEvadeEnemyWith
+  :: (ReverseQueue m, Sourceable source) => SkillType -> SkillTestId -> InvestigatorId -> source -> m ()
+chooseEvadeEnemyWith sType sid iid source = chooseEvadeEnemyEdit sid iid source (Evade.withSkillType sType)
+
 chooseEvadeEnemyEdit
   :: (ReverseQueue m, Sourceable source)
   => SkillTestId
@@ -1911,6 +1974,9 @@ mapQueue = lift . Msg.mapQueue
 toDiscardBy
   :: (ReverseQueue m, Sourceable source, Targetable target) => InvestigatorId -> source -> target -> m ()
 toDiscardBy iid source target = push $ Msg.toDiscardBy iid source target
+
+finalizeEvent :: ReverseQueue m => EventId -> m ()
+finalizeEvent eid = push $ Do (FinishedEvent eid)
 
 toDiscard
   :: (ReverseQueue m, Sourceable source, Targetable target) => source -> target -> m ()
@@ -2389,6 +2455,9 @@ fromQueue f = lift $ Arkham.Classes.HasQueue.fromQueue f
 matchingDon't :: (MonadTrans t, HasQueue Message m) => (Message -> Bool) -> t m ()
 matchingDon't f = lift $ popMessageMatching_ f
 
+allMatchingDon't :: (MonadTrans t, HasQueue Message m) => (Message -> Bool) -> t m ()
+allMatchingDon't f = lift $ removeAllMessagesMatching f
+
 cardDrawModifier
   :: (ReverseQueue m, Sourceable source, Targetable target)
   => CardDrawId -> source -> target -> ModifierType -> m ()
@@ -2787,6 +2856,9 @@ healDamageIfCan target source n = whenM (canHaveDamageHealed source (asId target
 healHorror
   :: (ReverseQueue m, Sourceable source, Targetable target) => target -> source -> Int -> m ()
 healHorror target source n = push $ Msg.HealHorror (toTarget target) (toSource source) n
+
+applyHealing :: (ReverseQueue m, Sourceable source) => source -> m ()
+applyHealing source = push $ Msg.ApplyHealing (toSource source)
 
 healHorrorDelayed
   :: (ReverseQueue m, Sourceable source, Targetable target) => target -> source -> Int -> m ()

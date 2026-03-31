@@ -92,7 +92,10 @@ allInvestigatorCards =
       , dexterDrake2
       , isabelleBarnes
       , nathanielCho
+      , tommyMuldoon2
       , harveyWalters
+      , carolynFern2
+      , marieLambeau2
       , winifredHabbamock
       , andrePatel
       , jacquelineFine
@@ -111,7 +114,6 @@ allInvestigatorCards =
       , fatherMateoParallel
       , jennyBarnesParallel
       , lolaHayesParallel
-      , tommyMuldoon2
       ]
 
 allEncounterInvestigatorCards :: Map CardCode CardDef
@@ -776,3 +778,11 @@ lolaHayesParallel =
 tommyMuldoon2 :: CardDef
 tommyMuldoon2 =
   investigator "60151" ("Tommy Muldoon" <:> "The Officer") Guardian [Police]
+
+carolynFern2 :: CardDef
+carolynFern2 =
+  investigator "60251" ("Carolyn Fern" <:> "The Psychologist") Seeker [Medic, Scholar]
+
+marieLambeau2 :: CardDef
+marieLambeau2 =
+  investigator "60451" ("Marie Lambeau" <:> "The Entertainer") Mystic [Performer, Witch]
