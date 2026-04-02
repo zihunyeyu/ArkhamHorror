@@ -910,7 +910,7 @@ onUnmounted(() => {
       <div style="display: flex; align-items: center; gap: 8px; margin-left: 8px;">
         <input 
           v-model="addCardCode" 
-          placeholder="Card code (e.g. c00001)" 
+          placeholder="Card code (e.g. 900001)" 
           style="padding: 4px 8px; border-radius: 4px; border: 1px solid #555; background: #333; color: white; font-size: 12px; width: 140px;"
           @keydown.enter="handleAddCard"
         />

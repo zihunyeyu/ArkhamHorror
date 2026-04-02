@@ -16,6 +16,10 @@ export interface ArkhamDbDecklist {
   slots: {
     [key: string]: number
   }
+  taboo_id?: number
+  sideSlots?: {
+    [key: string]: number
+  }
 }
 
 
@@ -42,6 +46,7 @@ export function deckClass(deck: Deck) {
 
 export type DeckList = {
   investigator_code: string;
+  investigator_name?: string;
   slots: Record<string, number>;
   meta?: string
   taboo_id?: number
@@ -57,6 +62,7 @@ export type Deck = {
 export const deckListDecoder = JsonDecoder.object<DeckList>(
   {
     investigator_code: JsonDecoder.string(),
+    investigator_name: v2Optional(JsonDecoder.string()),
     slots: JsonDecoder.record<number>(JsonDecoder.number(), 'Dict<cardcode, number'),
     meta: v2Optional(JsonDecoder.string()),
     taboo_id: v2Optional(JsonDecoder.number()),

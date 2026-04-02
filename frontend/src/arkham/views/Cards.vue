@@ -16,6 +16,7 @@ enum View {
 }
 
 const CHAPTER_2_CYCLES = new Set([12, 61])
+const CUSTOM_CYCLE = 999 // Virtual cycle for custom cards
 
 const SET_FONT_CHARS: Record<string, string> = {
   // CHAPTER 1
@@ -92,6 +93,7 @@ const allCards = shallowRef<Arkham.CardDef[] | null>(null)
 const query = ref<string>(queryText)
 const view = ref(route.query.view? toView(route.query.view) : View.List)
 const activeChapter = ref<number>(route.query.chapter ? parseInt(route.query.chapter.toString()) : 1)
+const showCustomCards = ref<boolean>(route.query.custom === 'true')
 
 const includeEncounter = computed(() => route.query.includeEncounter === "true")
 const store = useDbCardStore()
@@ -177,7 +179,19 @@ watch(() => view.value, (newView) => {
 })
 
 watch(() => activeChapter.value, (newChapter) => {
-  router.push({ name: 'Cards', query: { ...route.query, chapter: newChapter === 1 ? undefined : String(newChapter) }})
+  if (showCustomCards.value) {
+    showCustomCards.value = false
+  }
+  router.push({ name: 'Cards', query: { ...route.query, chapter: newChapter === 1 ? undefined : String(newChapter), custom: undefined }})
+})
+
+watch(() => showCustomCards.value, (newShowCustom) => {
+  if (newShowCustom) {
+    // Clear chapter when showing custom cards
+    router.push({ name: 'Cards', query: { ...route.query, custom: 'true', chapter: undefined }})
+  } else {
+    router.push({ name: 'Cards', query: { ...route.query, custom: undefined }})
+  }
 })
 
 watch(() => allCards.value, () => {
@@ -253,11 +267,54 @@ const setCountText = (set: CardSet) => {
 const cards = computed(() => {
   if (!allCards.value) return []
 
+  // Show custom cards when showCustomCards is true
+  if (showCustomCards.value) {
+    return allCards.value.filter((c) => {
+      if (c.cardCode === "cx05184") return false
+      const custom = isCustomCard(c)
+      if (!custom) return false
+      
+      // Apply other filters
+      const { classes, encounterSets, traits, text, level, cardTypes } = filter.value
+      
+      if (classes.length > 0) {
+        if (!c.classSymbols.some((cs) => classes.includes(cs.toLowerCase()))) return false
+      }
+
+      if (traits.length > 0) {
+        if (!c.cardTraits.some((cs) => traits.includes(cs.toLowerCase()))) return false
+      }
+
+      if (encounterSets.length > 0) {
+        const match: ArkhamDBCard | null = store.getDbCard(c.art)
+        if (!match) return false
+        return match.encounter_code !== undefined && encounterSets.includes(match.encounter_code)
+      }
+
+      if (text.length > 0) {
+        const cardNameMatches = text.some((t) => cardName(c).toLowerCase().includes(t.toLowerCase()))
+        const cardCodeMatches = text.some((t) => c.cardCode == `c${t.toLowerCase()}`)
+        if (!cardNameMatches && !cardCodeMatches) return false
+      }
+
+      if (level && c.level !== level) return false
+
+      if (cardTypes.length > 0) {
+        const sanitizedCardTypes = cardTypes.map((ct) => ct.toLowerCase().trim())
+        if (!sanitizedCardTypes.includes(cardType(c).toLowerCase().trim())) return false
+      }
+
+      return true
+    })
+  }
+
   const { classes, encounterSets, traits, cycle, set, text, level, cardTypes } = filter.value
   const cycleSets = cycle ? sets.filter((s) => s.cycle == cycle) : null
 
   return allCards.value.filter((c) => {
     if (c.cardCode === "cx05184") return false
+    // Exclude custom cards from regular view
+    if (isCustomCard(c)) return false
     if (cycleSets) {
       const cSet = cardSet(c)
       if (!cSet || !cycleSets.includes(cSet)) return false
@@ -421,6 +478,13 @@ const cardSet = (card: Arkham.CardDef) => {
   return sets.find((s) => cardCode >= s.min && cardCode <= s.max)
 }
 
+const isCustomCard = (card: Arkham.CardDef) => {
+  // Custom cards have art codes >= 900000 or no set assigned
+  const cardCode = parseInt(card.art)
+  if (cardCode >= 900000) return true
+  return cardSet(card) === undefined
+}
+
 const cycleSets = (cycle: CardCycle) => {
   return sets.filter((s) => s.cycle == cycle.cycle)
 }
@@ -463,16 +527,33 @@ const showSidebar = ref(false)
       <button class="sidebar-close" @click="showSidebar = false"><font-awesome-icon icon="times" /></button>
       <div class="chapter-tabs">
         <button
-          :class="['chapter-tab', { active: activeChapter === 1 }]"
-          @click="activeChapter = 1"
+          :class="['chapter-tab', { active: activeChapter === 1 && !showCustomCards }]"
+          @click="activeChapter = 1; showCustomCards = false"
         >Chapter 1</button>
         <button
-          :class="['chapter-tab', { active: activeChapter === 2 }]"
-          @click="activeChapter = 2"
+          :class="['chapter-tab', { active: activeChapter === 2 && !showCustomCards }]"
+          @click="activeChapter = 2; showCustomCards = false"
         >Chapter 2</button>
+        <button
+          :class="['chapter-tab', 'custom-tab', { active: showCustomCards }]"
+          @click="showCustomCards = true"
+        >Custom</button>
       </div>
       <nav class="cycles">
-        <ol>
+        <!-- Custom Cards Section -->
+        <div v-if="showCustomCards" class="custom-cards-section">
+          <div class="nav-row nav-row--header">
+            <span class="custom-header">Custom Cards</span>
+          </div>
+          <div class="nav-row nav-row--sub">
+            <span class="set-icon-font">?</span>
+            <span class="unknown-set-name">Unknown</span>
+            <span class="count" v-if="allCards">({{ allCards.filter(c => isCustomCard(c)).length }})</span>
+          </div>
+          <p class="custom-hint">All custom cards are grouped under the "Unknown" set.</p>
+        </div>
+        <!-- Regular Cycles/Sets -->
+        <ol v-else>
           <li v-for="cycle in displayedCycles" :key="cycle.code">
             <div class="nav-row">
               <i v-if="SET_FONT_CHARS[cycleIconCode(cycle)]" class="set-icon-font">{{ SET_FONT_CHARS[cycleIconCode(cycle)] }}</i>
@@ -643,6 +724,19 @@ const showSidebar = ref(false)
     color: var(--spooky-green);
     border-bottom-color: var(--spooky-green);
   }
+  
+  &.custom-tab {
+    color: #c8a96e;
+    
+    &:hover {
+      color: #e0c080;
+    }
+    
+    &.active {
+      color: #c8a96e;
+      border-bottom-color: #c8a96e;
+    }
+  }
 }
 
 .cycles {
@@ -724,6 +818,40 @@ const showSidebar = ref(false)
     font-weight: 400;
     color: #999;
   }
+}
+
+/* Custom cards section */
+.custom-cards-section {
+  padding: 8px 0;
+}
+
+.nav-row--header {
+  padding-left: 14px;
+  margin-bottom: 4px;
+  
+  .custom-header {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #c8a96e;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+}
+
+.unknown-set-name {
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: #999;
+  flex: 1;
+}
+
+.custom-hint {
+  padding: 12px 14px;
+  margin: 8px 0 0 0;
+  font-size: 0.75rem;
+  color: #666;
+  line-height: 1.5;
+  border-top: 1px solid rgba(255,255,255,0.06);
 }
 
 /* ── Results panel ──────────────────────────────────────── */

@@ -4,6 +4,7 @@ module Api.Handler.Arkham.Decks (
   postApiV1ArkhamDecksR,
   postApiV1ArkhamDecksValidateR,
   deleteApiV1ArkhamDeckR,
+  putApiV1ArkhamDeckR,
   putApiV1ArkhamGameDecksR,
   postApiV1ArkhamSyncDeckR,
 ) where
@@ -191,6 +192,29 @@ deleteApiV1ArkhamDeckR deckId = do
 newtype JSONError = JSONError {errorMsg :: Text}
   deriving stock (Show, Eq, Generic)
   deriving anyclass (ToJSON, FromJSON)
+
+data UpdateDeckPost = UpdateDeckPost
+  { updateDeckList :: ArkhamDBDecklist
+  }
+  deriving stock (Show, Generic)
+  deriving anyclass FromJSON
+
+putApiV1ArkhamDeckR :: ArkhamDeckId -> Handler (Entity ArkhamDeck)
+putApiV1ArkhamDeckR deckId = do
+  userId <- getRequestUserId
+  deck <- runDB $ get404 deckId
+  unless (arkhamDeckUserId deck == userId) do
+    sendStatusJSON
+      Status.status400
+      (JSONError "Deck does not belong to this user")
+  postData <- requireCheckJsonBody
+  let decklist = updateDeckList postData
+  case toDeckErrors decklist of
+    [] -> do
+      let updatedDeck = deck { arkhamDeckList = decklist }
+      runDB $ replace deckId updatedDeck
+      pure $ Entity deckId updatedDeck
+    err -> sendStatusJSON status400 err
 
 postApiV1ArkhamSyncDeckR :: ArkhamDeckId -> Handler (Entity ArkhamDeck)
 postApiV1ArkhamSyncDeckR deckId = do

@@ -20,7 +20,7 @@
         / ApiV1ArkhamDecksR GET POST
         !/validate ApiV1ArkhamDecksValidateR POST
         /#ArkhamDeckId ApiV1ArkhamDeckP:
-          / ApiV1ArkhamDeckR GET DELETE
+          / ApiV1ArkhamDeckR GET PUT DELETE
           /sync ApiV1ArkhamSyncDeckR POST
       /games ApiV1ArkhamGamesP:
         / ApiV1ArkhamGamesR GET POST
