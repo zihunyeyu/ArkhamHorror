@@ -12,6 +12,7 @@ module Api.Handler.Arkham.Games (
   deleteApiV1ArkhamGameR,
   putApiV1ArkhamGameRawR,
   postApiV1ArkhamGamePlayabilityR,
+  postApiV1ArkhamGameAddCardR,
 ) where
 
 import Api.Arkham.Helpers
@@ -26,15 +27,17 @@ import Arkham.Game
 import Arkham.GameEnv (getCard)
 import Arkham.Helpers.Playable (getPlayabilityChecks)
 import Arkham.Id
-import Arkham.Message (Message (HandleOption))
+import Arkham.Card.PlayerCard (lookupPlayerCard)
+import Arkham.Message (Message (HandleOption, CreateCard, AddToHand))
 import Arkham.Queue
 import Arkham.Source
 import Arkham.Window (mkWhen)
 import Arkham.Window qualified as Window
 import Conduit
-import Control.Monad.Random (mkStdGen)
+import Control.Monad.Random (mkStdGen, randomIO)
 import Control.Monad.Random.Class (getRandom)
 import Data.Coerce
+import Data.Text qualified as T
 import Data.Time.Clock
 import Database.Esqueleto.Experimental hiding (update, (=.))
 import Entity.Answer
@@ -204,3 +207,40 @@ postApiV1ArkhamGamePlayabilityR gameId = do
       , cardCode = unCardCode (toCardCode card)
       , checks
       }
+
+-- Add Card to Hand API
+data AddCardRequest = AddCardRequest
+  { cardCode :: CardCode
+  , investigatorId :: InvestigatorId
+  }
+  deriving stock (Show, Generic)
+  deriving anyclass FromJSON
+
+data AddCardResponse = AddCardResponse
+  { success :: Bool
+  , message :: Text
+  }
+  deriving stock (Show, Generic)
+  deriving anyclass ToJSON
+
+postApiV1ArkhamGameAddCardR :: ArkhamGameId -> Handler AddCardResponse
+postApiV1ArkhamGameAddCardR gameId = do
+  userId <- getRequestUserId
+  void $ runDB $ getBy404 (UniquePlayer userId gameId)
+  AddCardRequest {cardCode = ccInput, investigatorId = iid} <- requireCheckJsonBody
+  
+  -- Strip 'c' prefix if present (API returns "cc00001" but internal code is "c00001")
+  let cc = CardCode $ T.dropWhile (== 'c') (unCardCode ccInput)
+  
+  -- Check if card exists
+  case lookupCardDef cc of
+    Nothing -> pure AddCardResponse { success = False, message = "Card not found: " <> unCardCode cc }
+    Just def -> do
+      writeChannel <- (.channel) <$> getRoom gameId
+      -- Create a new card and add to hand
+      cardId <- liftIO $ unsafeMakeCardId <$> randomIO
+      let createMsg = CreateCard cardId cc
+      let addMsg = AddToHand iid [PlayerCard $ lookupPlayerCard def cardId]
+      updateGame (Raw createMsg) gameId writeChannel
+      updateGame (Raw addMsg) gameId writeChannel
+      pure AddCardResponse { success = True, message = "Card added to hand" }

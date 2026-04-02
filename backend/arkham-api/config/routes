@@ -43,6 +43,7 @@
           /scenario-export ApiV1ArkhamGameScenarioExportR GET
           /reload ApiV1ArkhamGameReloadR GET
           /playability ApiV1ArkhamGamePlayabilityR POST
+          /add-card ApiV1ArkhamGameAddCardR POST
     /admin AdminP:
       / ApiV1AdminR GET
       /rooms ApiV1AdminRoomsP:

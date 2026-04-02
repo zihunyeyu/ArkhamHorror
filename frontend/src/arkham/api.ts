@@ -209,3 +209,14 @@ export const debugGame = async (formData: FormData): Promise<Game> => {
   const { data } = await api.post("arkham/games/import", formData, { headers: { 'Content-Type': 'multipart/form-data' } })
   return gameDecoder.decodePromise(data)
 }
+
+
+export interface AddCardResponse {
+  success: boolean
+  message: string
+}
+
+export const addCardToHand = async (gameId: string, cardCode: string, investigatorId: string): Promise<AddCardResponse> => {
+  const { data } = await api.post(`arkham/games/${gameId}/add-card`, { cardCode, investigatorId })
+  return data
+}
