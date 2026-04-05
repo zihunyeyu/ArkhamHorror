@@ -22,7 +22,8 @@ import { LottieAnimation } from 'lottie-web-vue'
 import * as JsonDecoder from 'ts.data.json'
 import processingJSON from '@/assets/processing.json'
 import api from '@/api'
-import { fetchGame, undoChoice, undoScenarioChoice } from '@/arkham/api'
+import { fetchGame, undoChoice, undoScenarioChoice, addCardToHand } from '@/arkham/api'
+import { PlusIcon } from '@heroicons/vue/20/solid'
 import * as Api from '@/arkham/api'
 import { useCardStore } from '@/stores/cards'
 import { useUserStore } from '@/stores/user'
@@ -118,6 +119,8 @@ const uiLock = ref<boolean>(false)
 const showSettings = ref(false)
 const processing = ref(false)
 const oldQuestion = ref<Record<string, Question> | null>(null)
+const addCardCode = ref('')
+const showAddCard = ref(false)
 const { t } = useI18n();
 
 const format = (str: string) => {
@@ -135,6 +138,12 @@ addEntry({
 
 // Computed
 const cards = computed(() => store.cards)
+const currentInvestigatorId = computed(() => {
+  if (!game.value || !playerId.value) return null
+  // Find investigatorId by playerId
+  const entry = Object.entries(game.value.investigators).find(([_, inv]) => inv.playerId === playerId.value)
+  return entry ? entry[0] : null
+})
 const choices = computed(() => {
   if (!game.value || !playerId.value) return []
   return ArkhamGame.choices(game.value, playerId.value)
@@ -689,6 +698,25 @@ function debugExport (exportType: ExportType) {
   })
 }
 
+async function handleAddCard() {
+  if (!addCardCode.value || !currentInvestigatorId.value) return
+  const cardCode = addCardCode.value.trim()
+  if (!cardCode) return
+  
+  try {
+    const result = await addCardToHand(props.gameId, cardCode, currentInvestigatorId.value)
+    if (result.success) {
+      addCardCode.value = ''
+      alert('Card added to hand!')
+    } else {
+      alert('Failed to add card: ' + result.message)
+    }
+  } catch (e) {
+    console.error(e)
+    alert('Error adding card')
+  }
+}
+
 // provides
 provide('chooseDeck', chooseDeck)
 provide('chooseDeckList', chooseDeckList)
@@ -876,6 +904,15 @@ onUnmounted(() => {
         </Menu>
       </div>
       <div><button @click="filingBug = true"><ExclamationTriangleIcon aria-hidden="true" /> {{ $t('fileBug') }} </button></div>
+      <div style="display: flex; align-items: center; gap: 8px; margin-left: 8px;">
+        <input 
+          v-model="addCardCode" 
+          placeholder="Card code (e.g. 900001)" 
+          style="padding: 4px 8px; border-radius: 4px; border: 1px solid #555; background: #333; color: white; font-size: 12px; width: 140px;"
+          @keydown.enter="handleAddCard"
+        />
+        <button @click="handleAddCard" style="padding: 4px 12px; border-radius: 4px; background: #4a9; color: white; border: none; cursor: pointer; font-size: 12px;"><PlusIcon aria-hidden="true" style="width: 14px; height: 14px;" /> Add</button>
+      </div>
       <div v-for="item in menuItems" :key="item.id">
         <template v-if="item.nested === null || item.nested === undefined">
           <button @click="item.action">

@@ -20,7 +20,7 @@
         / ApiV1ArkhamDecksR GET POST
         !/validate ApiV1ArkhamDecksValidateR POST
         /#ArkhamDeckId ApiV1ArkhamDeckP:
-          / ApiV1ArkhamDeckR GET DELETE
+          / ApiV1ArkhamDeckR GET PUT DELETE
           /sync ApiV1ArkhamSyncDeckR POST
       /games ApiV1ArkhamGamesP:
         / ApiV1ArkhamGamesR GET POST
@@ -43,6 +43,7 @@
           /scenario-export ApiV1ArkhamGameScenarioExportR GET
           /reload ApiV1ArkhamGameReloadR GET
           /playability ApiV1ArkhamGamePlayabilityR POST
+          /add-card ApiV1ArkhamGameAddCardR POST
     /admin AdminP:
       / ApiV1AdminR GET
       /rooms ApiV1AdminRoomsP:

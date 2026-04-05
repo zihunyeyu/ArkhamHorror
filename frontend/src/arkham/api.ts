@@ -107,6 +107,14 @@ export const validateDeck = ( deckList: ArkhamDbDecklist): Promise<void> =>
 export const deleteDeck = (deckId: string): Promise<void> =>
   api.delete(`arkham/decks/${deckId}`);
 
+export const updateDeck = async (
+  deckId: string,
+  deckList: ArkhamDbDecklist,
+): Promise<Deck> => {
+  const { data } = await api.put(`arkham/decks/${deckId}`, { updateDeckList: deckList })
+  return deckDecoder.decodePromise(data)
+}
+
 export const syncDeck = async (deckId: string): Promise<Deck> => {
   const { data } = await api.post(`arkham/decks/${deckId}/sync`)
   return deckDecoder.decodePromise(data)
@@ -208,4 +216,15 @@ export const undoScenarioChoice = (gameId: string): Promise<void> =>
 export const debugGame = async (formData: FormData): Promise<Game> => {
   const { data } = await api.post("arkham/games/import", formData, { headers: { 'Content-Type': 'multipart/form-data' } })
   return gameDecoder.decodePromise(data)
+}
+
+
+export interface AddCardResponse {
+  success: boolean
+  message: string
+}
+
+export const addCardToHand = async (gameId: string, cardCode: string, investigatorId: string): Promise<AddCardResponse> => {
+  const { data } = await api.post(`arkham/games/${gameId}/add-card`, { cardCode, investigatorId })
+  return data
 }
