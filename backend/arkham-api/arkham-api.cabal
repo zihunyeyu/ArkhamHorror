@@ -1,6 +1,6 @@
 cabal-version: 1.12
 
--- This file has been generated from package.yaml by hpack version 0.38.1.
+-- This file has been generated from package.yaml by hpack version 0.39.1.
 --
 -- see: https://github.com/sol/hpack
 
@@ -805,6 +805,7 @@ library
       Arkham.Asset.Assets.CrystallizerOfDreams
       Arkham.Asset.Assets.CrystalPendulum
       Arkham.Asset.Assets.CurseOfAeons3
+      Arkham.Asset.Assets.CustomCardsTest1
       Arkham.Asset.Assets.CyclopeanHammer5
       Arkham.Asset.Assets.DaisysToteBag
       Arkham.Asset.Assets.DaisysToteBagAdvanced
@@ -1867,6 +1868,7 @@ library
       Arkham.Cost.Status
       Arkham.Criteria
       Arkham.Criteria.Override
+      Arkham.Custom.Sample.CustomCards
       Arkham.Customization
       Arkham.Damage
       Arkham.DamageEffect
