@@ -5707,6 +5707,7 @@ test-suite spec
       Arkham.Campaign.TheCircleUndone.ScenariosSpec
       Arkham.Campaign.TheDunwichLegacy.ScenariosSpec
       Arkham.Campaign.ThePathToCarcosa.ScenariosSpec
+      Arkham.DecklistSpec
       Arkham.Enemy.Cards.GuardianOfTheCrystallizerSpec
       Arkham.Enemy.Cards.MobEnforcerSpec
       Arkham.Enemy.Cards.SilverTwilightAcolyteSpec
@@ -5766,6 +5767,7 @@ test-suite spec
       Arkham.Investigator.Cards.ZoeySamarasSpec
       Arkham.Location.Cards.DreamGatePointlessRealitySpec
       Arkham.Location.Cards.DreamGateWondrousJourneySpec
+      Arkham.Location.Cards.EnchantedWoodsVillageOfZoogsSpec
       Arkham.Scenario.SpecHelpers
       Arkham.Skill.Cards.DeductionSpec
       Arkham.Skill.Cards.FearlessSpec
