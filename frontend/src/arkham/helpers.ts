@@ -91,15 +91,26 @@ export function isLocalized(src: string) {
 export function imgsrc(src: string) {
   const store = useSiteSettingsStore()
   const language = localStorage.getItem('language') || 'en'
-  const path = src.replace(/^\//, '')
+  var path = src.replace(/^\//, '')
+
+  const match = path.match(/(\d+)\.avif$/);
+  const cardCode = match ? match[1] : null;
+  const codeLen = cardCode?.length
+
+  if (codeLen && codeLen >= 6 ) {
+    path = path.replace("cards", "custom")
+  }
+
+
   const assetHost = store.assetHost || 'https://assets.arkhamhorror.app'
 
   // 1. 优先使用本地文件（支持多语言目录结构）
-  const localPath = language === 'en' ? path : `${language}/${path}`
+  var localPath = language === 'en' ? path : `${language}/${path}`
+
   if (localFiles.has(localPath)) {
-    if (language == 'zh'){
-      return `https://arkhamhorrorcards.oss-cn-shanghai.aliyuncs.com/${localPath}`
-    }
+    // if (language == 'zh'){
+    //   return `https://arkhamhorrorcards.oss-cn-shanghai.aliyuncs.com/${localPath}`
+    // }
     return `/img/arkham/${localPath}`
   }
   

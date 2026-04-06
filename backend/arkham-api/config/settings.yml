@@ -2,7 +2,7 @@ host: "_env:HOST:*4"
 port: "_env:PORT:3002"
 ip-from-header: "_env:IP_FROM_HEADER:false"
 jwt-secret: "_env:JWT_SECRET:arkhamhorrorlcgarkhamhorrorlcgarkhamhorrorlcg"
-database-url: "_env:DATABASE_URL:postgres://localhost:5432/arkham-horror-backend"
+database-url: "_env:DATABASE_URL:postgres://arkham_pg_user:7WCizg9KyrLodFV7M3MmeIn9aY_e_NwGLcupLqm-4N8@localhost:5433/arkham-horror-backend"
 database-pool-size: "_env:DB_POOL:10"
 detailed-logging: false
 should-log-all: false

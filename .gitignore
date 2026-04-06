@@ -55,7 +55,7 @@ frontend/public/img/arkham/sets/
 frontend/public/img/arkham/customizations/
 frontend/public/img/arkham/seals/
 frontend/public/img/arkham/playing-cards/
-
+docs/customCards
 **/postgres_password.txt
 k8s/
 
@@ -82,3 +82,7 @@ terraform.tfvars
 # Local env / secrets
 secrets.*
 kubeconfig*
+backend/build.log
+backend/arkham-api/arkham-api.cabal
+backend/arkham-api/arkham-api.cabal
+backend/arkham-api/arkham-api.cabal

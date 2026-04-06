@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-03-30T18:33:37.030Z",
-  "count": 20404,
+  "generatedAt": "2026-04-02T11:47:31.433Z",
+  "count": 20406,
   "files": [
     "back.png",
     "background.jpg",
@@ -13703,6 +13703,7 @@
     "cards/89005.jpg",
     "cards/89005b.avif",
     "cards/89005b.jpg",
+    "cards/900001.avif",
     "cards/90001.avif",
     "cards/90001.jpg",
     "cards/90002.avif",
@@ -20405,6 +20406,7 @@
     "zh/cards/60528.avif",
     "zh/cards/60529.avif",
     "zh/cards/60530.avif",
-    "zh/cards/60531.avif"
+    "zh/cards/60531.avif",
+    "zh/custom/900001.avif"
   ]
 }

@@ -1573,4 +1573,6 @@ allAssets =
       , SomeAssetCard longbow3
       , -- Misc
         SomeAssetCard courage
+      , -- Custom
+        SomeAssetCard customCardsTest1
       ]
