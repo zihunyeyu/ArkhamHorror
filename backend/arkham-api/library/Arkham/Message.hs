@@ -443,6 +443,12 @@ data SkillTestOption = SkillTestOption
   }
   deriving stock (Show, Ord, Eq, Generic, Data)
 
+setOptionCriteria :: Criterion -> SkillTestOption -> SkillTestOption
+setOptionCriteria c sto = sto { criteria = Just c }
+
+optionWhenExists :: Exists a => a -> SkillTestOption -> SkillTestOption
+optionWhenExists a = setOptionCriteria (exists a)
+
 data Message
   = UseAbility InvestigatorId Ability [Window]
   | ResolvedAbility Ability -- INTERNAL, See Arbiter of Fates
@@ -1427,6 +1433,7 @@ mconcat
                       mTarget
                       sType
                       isAction
+                      isAction
                       False
                       False
                       sid
@@ -1444,6 +1451,7 @@ mconcat
                       src
                       mTarget
                       sType
+                      False
                       False
                       False
                       False
