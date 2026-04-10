@@ -4857,6 +4857,11 @@ instance Query ChaosTokenMatcher where
           ChaosTokenValue _ (NegativeModifier _) -> True
           ChaosTokenValue _ (DoubleNegativeModifier _) -> True
           _ -> False
+      WithAutoFailModifier -> \t -> do
+        iid' <- toId <$> getActiveInvestigator
+        getChaosTokenValue iid' t.face () <&> \case
+          ChaosTokenValue _ AutoFailModifier -> True
+          _ -> False
       ChaosTokenOriginalFaceIs face -> pure . (== face) . chaosTokenFace
       ChaosTokenFaceIs face -> fmap (elem face) . getModifiedChaosTokenFace
       ChaosTokenFaceIsNot face -> fmap not . go (ChaosTokenFaceIs face)
@@ -5235,8 +5240,8 @@ instance Query ExtendedCardMatcher where
           iids <- select who
           names <- concatMapM (fieldMap InvestigatorHand (map toName)) iids
           pure $ count (== name) names > 1
-      CardWithHollowedCopy -> do
-        hollows <- selectMap toTitle HollowedCard
+      CardWithHollowedCopy inner -> do
+        hollows <- selectMap toTitle (HollowedCard <> inner)
         pure $ cs & filter \c -> toTitle c `elem` hollows
       InEncounterDiscard -> do
         cards <- scenarioFieldMap ScenarioDiscard (map toCard)
