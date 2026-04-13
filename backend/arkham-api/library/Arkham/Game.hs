@@ -3756,6 +3756,7 @@ enemyMatcherFilter es matcher' = do
     EnemyWithModifier modifier -> do
       flip filterM es \enemy -> elem modifier <$> getModifiers (toTarget enemy)
     EnemyWithEvade -> filterM (fieldP EnemyEvade isJust . toId) es
+    EnemyWithEvadeValue n -> filterM (fieldP EnemyEvade (== Just n) . toId) es
     EnemyWithFight -> filterM (fieldP EnemyFight isJust . toId) es
     EnemyWithPlacement p -> filterM (fieldP EnemyPlacement (== p) . toId) es
     EnemyHiddenInHand investigatorMatcher -> do
@@ -5912,13 +5913,16 @@ runMessages gameId mLogger = do
                 [] -> pushEnd EndInvestigation
                 [x] -> push $ ChoosePlayer x SetTurnPlayer
                 xs -> do
-                  player <- runWithEnv $ getPlayer (g ^. leadInvestigatorIdL)
-                  push
-                    $ questionLabel "Choose player to take turn" player
-                    $ ChooseOne
-                      [ PortraitLabel iid [ChoosePlayer iid SetTurnPlayer]
-                      | iid <- xs
-                      ]
+                  if view leadInvestigatorIdL g == "00000"
+                    then push ChooseLeadInvestigator
+                    else do
+                      player <- runWithEnv $ getPlayer (g ^. leadInvestigatorIdL)
+                      push
+                        $ questionLabel "Choose player to take turn" player
+                        $ ChooseOne
+                          [ PortraitLabel iid [ChoosePlayer iid SetTurnPlayer]
+                          | iid <- xs
+                          ]
 
               runMessages gameId mLogger
             else do

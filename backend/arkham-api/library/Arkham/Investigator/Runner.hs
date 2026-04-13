@@ -55,6 +55,7 @@ import Arkham.Enemy.Types qualified as Field
 import Arkham.Event.Types (Field (..))
 import Arkham.Fight.Types
 import {-# SOURCE #-} Arkham.Game (asIfTurn, withoutCanModifiers)
+import Arkham.Game.Settings (settingsStrictAsIfAt)
 import {-# SOURCE #-} Arkham.GameEnv
 import Arkham.Helpers
 import Arkham.Helpers.Ability (
@@ -83,7 +84,6 @@ import Arkham.Helpers.Criteria (passesCriteria)
 import Arkham.Helpers.Deck qualified as Deck
 import Arkham.Helpers.Discover
 import Arkham.Helpers.Game (withAlteredGame)
-import Arkham.Game.Settings (settingsStrictAsIfAt)
 import Arkham.Helpers.Location (
   getCanMoveTo,
   getCanMoveToMatchingLocations,
@@ -2935,6 +2935,11 @@ runInvestigatorMessage msg a@InvestigatorAttrs {..} = withSpan_ "runInvestigator
     pure $ a & assignedHealthDamageL %~ max 0 . subtract n
   HealHorrorDirectly (InvestigatorTarget iid) source amount | iid == investigatorId -> do
     -- USE ONLY WHEN NO CALLBACKS
+    let totalSanity = amount + investigatorHorrorHealed
+    let overHealSanity = max 0 (totalSanity - a.sanityDamage - a.assignedSanityDamage)
+
+    pushWhen (overHealSanity > 0) $ ExcessHealHorror a.id source overHealSanity
+
     a' <-
       if amount > 0 then liftRunMessage (RemoveTokens source (toTarget a) #horror amount) a else pure a
     pure
@@ -2945,7 +2950,11 @@ runInvestigatorMessage msg a@InvestigatorAttrs {..} = withSpan_ "runInvestigator
     cannotHealDamage <- hasModifier a CannotHealDamage
     if cannotHealDamage
       then pure a
-      else liftRunMessage (RemoveTokens source (toTarget a) #damage amount) a
+      else do
+        let overHealDamage = max 0 (amount - a.healthDamage - a.assignedHealthDamage)
+        pushWhen (overHealDamage > 0) $ ExcessHealDamage a.id source overHealDamage
+
+        liftRunMessage (RemoveTokens source (toTarget a) #damage amount) a
   InvestigatorWhenDefeated source iid | iid == investigatorId -> do
     modifiedHealth <- field InvestigatorHealth (toId a)
     modifiedSanity <- field InvestigatorSanity (toId a)
@@ -3708,6 +3717,7 @@ runInvestigatorMessage msg a@InvestigatorAttrs {..} = withSpan_ "runInvestigator
         else push $ drawCards investigatorId ScenarioSource 1
     push $ ForTarget (toTarget a) (DoStep 2 (ForInvestigator investigatorId AllDrawCardAndResource))
     pure a
+  SendMessage (isTarget a -> True) msg' -> liftRunMessage msg' a
   ForTarget (isTarget a -> True) (DoStep 2 (ForInvestigator _ AllDrawCardAndResource)) | not (a ^. defeatedL || a ^. resignedL) -> do
     lift $ takeUpkeepResources a
   LoadDeck iid deck | iid == investigatorId -> do
