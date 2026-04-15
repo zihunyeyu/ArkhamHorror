@@ -26,7 +26,6 @@ import Arkham.Card.CardCode
 import Arkham.Card.CardDef
 import Arkham.Prelude
 
-import Arkham.Custom.Sample.CustomCards as X
 
 allPlayerAssetCards :: Map CardCode CardDef
 allPlayerAssetCards =
@@ -1048,8 +1047,7 @@ allPlayerAssetCards =
       , zebulonWhateley
       , zoeysCross
       , zoeysCrossAdvanced
-      -- custom cards
-      , customCardsTest1
+      , drHenryArmitageSpreadingFlames
       ]
 
 -- with encounter backs

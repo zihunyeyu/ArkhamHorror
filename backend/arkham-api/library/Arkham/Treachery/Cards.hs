@@ -672,6 +672,15 @@ allEncounterTreacheryCards =
       , yithianPresence
       , zeroVisibility
       , zoogBurrow
+      , cosmicEvils
+      , blasphemousInvocation
+      , unspeakableTruths
+      , forbiddenSecrets
+      , mutated1
+      , extraplanarVisions
+      , wildCompulsion
+      , fire1
+      , noxiousSmoke
       ]
 
 coverUp :: CardDef
@@ -4429,4 +4438,67 @@ vampiresKiss :: CardDef
 vampiresKiss =
   (treachery "72059" "Vampire's Kiss" AbominableContessa 2)
     { cdCardTraits = singleton Scheme
+    }
+
+cosmicEvils :: CardDef
+cosmicEvils =
+  (treachery "12124" "Cosmic Evils" CosmicEvils 3)
+    { cdCardTraits = setFromList [Omen]
+    , cdKeywords = setFromList [Keyword.Peril]
+    }
+
+blasphemousInvocation :: CardDef
+blasphemousInvocation = 
+  (treachery "12190" "Blasphemous Invocation" Cultists 2)
+    {
+      cdCardTraits = singleton Hex
+    }
+
+unspeakableTruths :: CardDef
+unspeakableTruths = 
+  (treachery "12125" "Unspeakable Truths" EldritchLore 2)
+    {
+      cdCardTraits = singleton Terror
+    }
+
+forbiddenSecrets :: CardDef
+forbiddenSecrets = 
+  (treachery "12126" "Forbidden Secrets" EldritchLore 2)
+    {
+      cdCardTraits = singleton Pact
+    }
+
+mutated1 :: CardDef
+mutated1 = 
+  (treachery "12131" "Mutated!" TheGathering 10)
+    {
+      cdCardTraits = singleton Mutation
+    }
+
+extraplanarVisions :: CardDef
+extraplanarVisions =
+  (treachery "12127" "Extraplanar Visions" Hallucinations 2)
+    {
+      cdCardTraits = singleton Power
+    }
+
+wildCompulsion :: CardDef
+wildCompulsion =
+  (treachery "12128" "Wild Compulsion" Hallucinations 2)
+    {
+      cdCardTraits = setFromList [Madness, Bane]
+    }
+
+fire1 :: CardDef
+fire1 = 
+  (treachery "12129" "Fire!" TheGathering 10)
+    {
+      cdCardTraits = singleton Hazard
+    }
+
+noxiousSmoke :: CardDef
+noxiousSmoke = 
+  (treachery "12130" "Noxious Smoke" TheGathering 10)
+    {
+      cdCardTraits = singleton Hazard
     }

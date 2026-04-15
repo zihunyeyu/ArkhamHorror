@@ -298,6 +298,18 @@ data EncounterSet
   | CosmicJourney
   | ForgottenIsland
   | AbominableContessa
+  | SpreadingFlames
+  | AshenPilgrims
+  | Bystanders
+  | CosmicEvils
+  | EldritchLore
+  | Fire1
+  | Hallucinations
+  | MadScience
+  | MiskatonicUniversity
+  | Torment
+  | GangsOfArkham
+  | Cultists
   | Test
   deriving stock (Show, Eq, Ord, Bounded, Enum, Data)
 

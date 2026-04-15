@@ -553,6 +553,15 @@ allEncounterEnemyCards =
       , youngDeepOne
       , youngPsychopath
       , zadokAllenDrunkAndDisorderly
+      , servantOfFlameRagingFury
+      , cantorOfFlame
+      , hellhound
+      , bystander
+      , mutatedExperiment
+      , batHorror
+      , rogueGangster
+      , zealot
+      , darkMagician
       ]
 
 allSpecialEnemyCards :: Map CardCode CardDef
@@ -4548,4 +4557,77 @@ bloodDrinker =
   (basicWeakness "60554" "Blood Drinker")
     { cdCardTraits = setFromList [Humanoid, Monster]
     , cdKeywords = setFromList [Keyword.Hunter, Keyword.Retaliate]
+    }
+
+servantOfFlameRagingFury :: CardDef
+servantOfFlameRagingFury = 
+  (enemy "12114" "Servant of Flame" SpreadingFlames 1)
+    {
+      cdCardTraits = setFromList [Humanoid, Elite],
+      cdKeywords = setFromList [Keyword.Hunter, Keyword.Retaliate],
+      cdVictoryPoints = Just 2
+    }
+
+cantorOfFlame :: CardDef
+cantorOfFlame = 
+  (enemy "12121" "Cantor of Flame" AshenPilgrims 2)
+    {
+      cdCardTraits = setFromList [Humanoid, Cultist],
+      cdKeywords = setFromList [Keyword.Retaliate]
+    }
+
+hellhound :: CardDef
+hellhound = 
+  (enemy "12122" "Hellhound" AshenPilgrims 2)
+    {
+      cdCardTraits = setFromList [Creature, Monster],
+      cdKeywords = setFromList [Keyword.Hunter]
+    }
+
+bystander :: CardDef
+bystander = 
+  (enemy "12123" "Bystander" Bystanders 3)
+    {
+      cdCardTraits = setFromList [Humanoid, Civilian],
+      cdKeywords = setFromList [Keyword.Doomed]
+    }
+
+mutatedExperiment :: CardDef
+mutatedExperiment = 
+  (enemy "12132" "Mutated Experiment" MadScience 2)
+    {
+      cdCardTraits = setFromList [Creature, Mutated]
+    }
+
+batHorror :: CardDef
+batHorror = 
+  (enemy "12162" "Bat Horror" Torment 2)
+    {
+      cdCardTraits = setFromList [Monster],
+      cdKeywords = setFromList [Keyword.Elusive, Keyword.Hunter]
+    }
+
+rogueGangster :: CardDef
+rogueGangster = 
+  (enemy "12164" "Rogue Gangster" GangsOfArkham 2)
+    {
+      cdCardTraits = setFromList [Humanoid, Syndicate],
+      cdKeywords = setFromList [Keyword.Hunter, Keyword.Retaliate]
+    }
+  
+zealot :: CardDef
+zealot = 
+  (enemy "12188" "Zealot" Cultists 3)
+    {
+      cdCardTraits = setFromList [Humanoid, Cultist],
+      cdKeywords = setFromList [Keyword.Aloof]
+    }
+
+darkMagician :: CardDef
+darkMagician = 
+  (enemy "12189" "Dark Magician" Cultists 1)
+    {
+      cdCardTraits = setFromList [Humanoid, Cultist],
+      cdKeywords = setFromList [Keyword.Hunter, Keyword.Retaliate],
+      cdVictoryPoints = Just 1
     }

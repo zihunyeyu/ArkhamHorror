@@ -1225,6 +1225,8 @@ allAssets =
       , SomeAssetCard handCrankFlashlight
       , --- basic weakness [core2026]
         SomeAssetCard theGoldBug
+      , --- story [core2026]
+        SomeAssetCard drHenryArmitageSpreadingFlames
       , -- Return to Night of the Zealot
         --- guardian [rtnotz]
         SomeAssetCard physicalTraining2
@@ -1573,6 +1575,4 @@ allAssets =
       , SomeAssetCard longbow3
       , -- Misc
         SomeAssetCard courage
-      , -- Custom
-        SomeAssetCard customCardsTest1
       ]

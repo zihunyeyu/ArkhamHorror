@@ -925,4 +925,19 @@ allTreacheries =
         SomeTreacheryCard yaztaroth
       , --- Dark Revelations
         SomeTreacheryCard liberOmniumFinium
+      , --- Cosmic Evils
+        SomeTreacheryCard cosmicEvils
+      , --- Cultists
+        SomeTreacheryCard blasphemousInvocation
+      , --- Eldritch Lore
+        SomeTreacheryCard unspeakableTruths
+      , SomeTreacheryCard forbiddenSecrets
+      , --- Mad Science
+        SomeTreacheryCard mutated1
+      , --- Fire!
+        SomeTreacheryCard fire1
+      , SomeTreacheryCard noxiousSmoke
+      , --- Hallucinations
+        SomeTreacheryCard extraplanarVisions
+      , SomeTreacheryCard wildCompulsion
       ]
