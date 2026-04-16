@@ -806,7 +806,6 @@ library
       Arkham.Asset.Assets.CrystallizerOfDreams
       Arkham.Asset.Assets.CrystalPendulum
       Arkham.Asset.Assets.CurseOfAeons3
-      Arkham.Asset.Assets.CustomCardsTest1
       Arkham.Asset.Assets.CyclopeanHammer5
       Arkham.Asset.Assets.DaisysToteBag
       Arkham.Asset.Assets.DaisysToteBagAdvanced
@@ -887,6 +886,7 @@ library
       Arkham.Asset.Assets.DrElliHorowitz
       Arkham.Asset.Assets.DrFrancisMorgan
       Arkham.Asset.Assets.DrHenryArmitage
+      Arkham.Asset.Assets.DrHenryArmitageSpreadingFlames
       Arkham.Asset.Assets.DrMalaSinhaDaringPhysician
       Arkham.Asset.Assets.DrMalaSinhaDaringPhysicianResolute
       Arkham.Asset.Assets.DrMilanChristopher
@@ -1869,7 +1869,6 @@ library
       Arkham.Cost.Status
       Arkham.Criteria
       Arkham.Criteria.Override
-      Arkham.Custom.Sample.CustomCards
       Arkham.Customization
       Arkham.Damage
       Arkham.DamageEffect
@@ -1948,6 +1947,7 @@ library
       Arkham.Enemy.Cards.BalefulReveler
       Arkham.Enemy.Cards.BarnabasMarshTheChangeIsUponHim
       Arkham.Enemy.Cards.Basilisk
+      Arkham.Enemy.Cards.BatHorror
       Arkham.Enemy.Cards.BeastOfAldebaran
       Arkham.Enemy.Cards.BeingsOfIb
       Arkham.Enemy.Cards.BenignElderThing
@@ -1971,7 +1971,9 @@ library
       Arkham.Enemy.Cards.BuriedMinerALostMemento
       Arkham.Enemy.Cards.BuriedMinerExhumeTheBones
       Arkham.Enemy.Cards.BurrowingHybrid
+      Arkham.Enemy.Cards.Bystander
       Arkham.Enemy.Cards.CaldwellPhilipsCompelledByDreams
+      Arkham.Enemy.Cards.CantorOfFlame
       Arkham.Enemy.Cards.CaptiveSubjects
       Arkham.Enemy.Cards.CarlSanfordDeathlessFanatic
       Arkham.Enemy.Cards.CarlSanfordIntimidatingPresence
@@ -2018,6 +2020,7 @@ library
       Arkham.Enemy.Cards.DagonsBrood
       Arkham.Enemy.Cards.DanforthBrilliantStudent
       Arkham.Enemy.Cards.DanielChesterfield
+      Arkham.Enemy.Cards.DarkMagician
       Arkham.Enemy.Cards.DarkYoungHost
       Arkham.Enemy.Cards.DeclanPearce
       Arkham.Enemy.Cards.DeepOneBull
@@ -2094,6 +2097,7 @@ library
       Arkham.Enemy.Cards.HasturLordOfCarcosa
       Arkham.Enemy.Cards.HasturTheKingInYellow
       Arkham.Enemy.Cards.HasturTheTatteredKing
+      Arkham.Enemy.Cards.Hellhound
       Arkham.Enemy.Cards.HenryDeveauAlejandrosKidnapper
       Arkham.Enemy.Cards.Heretic_A
       Arkham.Enemy.Cards.Heretic_C
@@ -2192,6 +2196,7 @@ library
       Arkham.Enemy.Cards.MoonboundByakhee
       Arkham.Enemy.Cards.MoonLizard
       Arkham.Enemy.Cards.MrTrombly
+      Arkham.Enemy.Cards.MutatedExperiment
       Arkham.Enemy.Cards.Nahab
       Arkham.Enemy.Cards.Narogath
       Arkham.Enemy.Cards.Nasht
@@ -2249,6 +2254,7 @@ library
       Arkham.Enemy.Cards.RoachSwarm
       Arkham.Enemy.Cards.RoaldEllsworthIntrepidExplorer
       Arkham.Enemy.Cards.RobertFriendlyDisgruntledDockworker
+      Arkham.Enemy.Cards.RogueGangster
       Arkham.Enemy.Cards.RookieCop
       Arkham.Enemy.Cards.RoyalEmissary
       Arkham.Enemy.Cards.RuthTurner
@@ -2276,6 +2282,7 @@ library
       Arkham.Enemy.Cards.SerpentOfTenochtitlan
       Arkham.Enemy.Cards.SerpentsOfYig
       Arkham.Enemy.Cards.SerpentsOfYigAdvanced
+      Arkham.Enemy.Cards.ServantOfFlameRagingFury
       Arkham.Enemy.Cards.ServantOfManyMouths
       Arkham.Enemy.Cards.ServantOfTheLurker
       Arkham.Enemy.Cards.SethBishop
@@ -2404,6 +2411,7 @@ library
       Arkham.Enemy.Cards.YourWorstNightmare
       Arkham.Enemy.Cards.ZadokAllenDrunkAndDisorderly
       Arkham.Enemy.Cards.Zamacona
+      Arkham.Enemy.Cards.Zealot
       Arkham.Enemy.Creation
       Arkham.Enemy.Enemies
       Arkham.Enemy.Helpers
@@ -4823,6 +4831,7 @@ library
       Arkham.Treachery.Cards.AcridMiasma
       Arkham.Treachery.Cards.AcrossSpaceAndTime
       Arkham.Treachery.Cards.Action
+      Arkham.Treachery.Cards.AerialPursuit
       Arkham.Treachery.Cards.AlteredBeast
       Arkham.Treachery.Cards.Amnesia
       Arkham.Treachery.Cards.Anamnesis
@@ -4834,6 +4843,7 @@ library
       Arkham.Treachery.Cards.Apeirophobia
       Arkham.Treachery.Cards.AquaticAmbush
       Arkham.Treachery.Cards.ArcaneBarrier
+      Arkham.Treachery.Cards.ArcaneLock
       Arkham.Treachery.Cards.ArcaneSpotlightA
       Arkham.Treachery.Cards.ArcaneSpotlightB
       Arkham.Treachery.Cards.ArcaneSpotlightC
@@ -4858,6 +4868,7 @@ library
       Arkham.Treachery.Cards.BeyondThePale
       Arkham.Treachery.Cards.BeyondTheVeil
       Arkham.Treachery.Cards.BlackStarsRise
+      Arkham.Treachery.Cards.BlasphemousInvocation
       Arkham.Treachery.Cards.BlasphemousVisions
       Arkham.Treachery.Cards.BleedingReality
       Arkham.Treachery.Cards.BleedingWalls
@@ -4915,6 +4926,7 @@ library
       Arkham.Treachery.Cards.ConspiracyOfDeepOnes
       Arkham.Treachery.Cards.Cornered
       Arkham.Treachery.Cards.Corrosion
+      Arkham.Treachery.Cards.CosmicEvils
       Arkham.Treachery.Cards.CoverUp
       Arkham.Treachery.Cards.CoverUpAdvanced
       Arkham.Treachery.Cards.CrackingIce
@@ -4924,6 +4936,7 @@ library
       Arkham.Treachery.Cards.CreepingPoison
       Arkham.Treachery.Cards.CrisisOfFaith
       Arkham.Treachery.Cards.CrisisOfIdentity
+      Arkham.Treachery.Cards.Crossfire
       Arkham.Treachery.Cards.CruelInterrogations
       Arkham.Treachery.Cards.CrumblingRuins
       Arkham.Treachery.Cards.CryptChill
@@ -4960,10 +4973,12 @@ library
       Arkham.Treachery.Cards.DismalCurse
       Arkham.Treachery.Cards.DisquietingDreams
       Arkham.Treachery.Cards.DisruptivePoltergeist
+      Arkham.Treachery.Cards.Dissonance
       Arkham.Treachery.Cards.DissonantVoices
       Arkham.Treachery.Cards.DistortedReasoning
       Arkham.Treachery.Cards.Doomed
       Arkham.Treachery.Cards.DownAndOut
+      Arkham.Treachery.Cards.Downpour
       Arkham.Treachery.Cards.DraggedUnder
       Arkham.Treachery.Cards.DraggedUnderDevilReef
       Arkham.Treachery.Cards.DrawingTheSign
@@ -4990,6 +5005,7 @@ library
       Arkham.Treachery.Cards.Excruciate
       Arkham.Treachery.Cards.Expulsion
       Arkham.Treachery.Cards.ExtradimensionalVisions
+      Arkham.Treachery.Cards.ExtraplanarVisions
       Arkham.Treachery.Cards.EyesInTheTrees
       Arkham.Treachery.Cards.EyesInTheWalls
       Arkham.Treachery.Cards.FailedExperiment
@@ -5006,8 +5022,11 @@ library
       Arkham.Treachery.Cards.FinalRhapsodyAdvanced
       Arkham.Treachery.Cards.FineDining
       Arkham.Treachery.Cards.FinePrint
+      Arkham.Treachery.Cards.Fire1
+      Arkham.Treachery.Cards.FlashFlood
       Arkham.Treachery.Cards.FlipTheScript
       Arkham.Treachery.Cards.FogOverInnsmouth
+      Arkham.Treachery.Cards.ForbiddenSecrets
       Arkham.Treachery.Cards.ForcedIntoHiding
       Arkham.Treachery.Cards.FoundFootage
       Arkham.Treachery.Cards.FracturedConsciousness
@@ -5087,6 +5106,7 @@ library
       Arkham.Treachery.Cards.KindredMist
       Arkham.Treachery.Cards.KissOfBrine
       Arkham.Treachery.Cards.KnivesInTheDark
+      Arkham.Treachery.Cards.Languor
       Arkham.Treachery.Cards.LastLooks
       Arkham.Treachery.Cards.LawOfYgirothChaos
       Arkham.Treachery.Cards.LawOfYgirothDiscord
@@ -5133,6 +5153,7 @@ library
       Arkham.Treachery.Cards.MistsFromBeyond
       Arkham.Treachery.Cards.MorbidAwareness
       Arkham.Treachery.Cards.MorbidCuriosity
+      Arkham.Treachery.Cards.Mutated1
       Arkham.Treachery.Cards.MyriadForms
       Arkham.Treachery.Cards.MysteriesOfTheLodge
       Arkham.Treachery.Cards.MysteriousChanting
@@ -5147,6 +5168,7 @@ library
       Arkham.Treachery.Cards.NoTurningBack
       Arkham.Treachery.Cards.NoxiousFumes
       Arkham.Treachery.Cards.NoxiousFumesTheMidwinterGala
+      Arkham.Treachery.Cards.NoxiousSmoke
       Arkham.Treachery.Cards.ObscuringFog
       Arkham.Treachery.Cards.ObsessedGamblerA
       Arkham.Treachery.Cards.ObsessedGamblerB
@@ -5198,12 +5220,15 @@ library
       Arkham.Treachery.Cards.Pursued
       Arkham.Treachery.Cards.PushedIntoTheBeyond
       Arkham.Treachery.Cards.PushedIntoTheBeyondTheMidwinterGala
+      Arkham.Treachery.Cards.PutridVapors
       Arkham.Treachery.Cards.RadicalTreatment
       Arkham.Treachery.Cards.RaiseTheStakes
+      Arkham.Treachery.Cards.RaisingSuspicions
       Arkham.Treachery.Cards.RationalThought
       Arkham.Treachery.Cards.RealityAcid5U21
       Arkham.Treachery.Cards.RealmOfMadness
       Arkham.Treachery.Cards.RealmOfTorment
+      Arkham.Treachery.Cards.RedHerring
       Arkham.Treachery.Cards.ResentfulWilds
       Arkham.Treachery.Cards.RestlessJourneyFallacy
       Arkham.Treachery.Cards.RestlessJourneyHardship
@@ -5327,6 +5352,7 @@ library
       Arkham.Treachery.Cards.TimelineDestabilization
       Arkham.Treachery.Cards.ToFightTheBlackWind
       Arkham.Treachery.Cards.ToilAndTrouble
+      Arkham.Treachery.Cards.Torment
       Arkham.Treachery.Cards.TorturousChords
       Arkham.Treachery.Cards.Totality
       Arkham.Treachery.Cards.TouchOfTheBeyond
@@ -5352,9 +5378,11 @@ library
       Arkham.Treachery.Cards.UnhallowedLand
       Arkham.Treachery.Cards.UnknowablePast
       Arkham.Treachery.Cards.Unlucky
+      Arkham.Treachery.Cards.UnnaturalDecay
       Arkham.Treachery.Cards.UnspeakableOathBloodthirst
       Arkham.Treachery.Cards.UnspeakableOathCowardice
       Arkham.Treachery.Cards.UnspeakableOathCuriosity
+      Arkham.Treachery.Cards.UnspeakableTruths
       Arkham.Treachery.Cards.UnstableEnergies
       Arkham.Treachery.Cards.VampiresKiss
       Arkham.Treachery.Cards.VastExpanse
@@ -5394,6 +5422,7 @@ library
       Arkham.Treachery.Cards.WhispersInYourHeadDread
       Arkham.Treachery.Cards.WhispersOfHypnos
       Arkham.Treachery.Cards.Whiteout
+      Arkham.Treachery.Cards.WildCompulsion
       Arkham.Treachery.Cards.WildRide
       Arkham.Treachery.Cards.WillOfTheSpiderMother
       Arkham.Treachery.Cards.WindowToAnotherTime

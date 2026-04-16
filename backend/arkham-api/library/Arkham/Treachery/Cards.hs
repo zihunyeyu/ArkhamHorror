@@ -679,6 +679,18 @@ allEncounterTreacheryCards =
       , mutated1
       , extraplanarVisions
       , wildCompulsion
+      , languor
+      , dissonance
+      , torment
+      , arcaneLock
+      , downpour
+      , flashFlood
+      , raisingSuspicions
+      , redHerring
+      , aerialPursuit
+      , crossfire
+      , unnaturalDecay
+      , putridVapors
       , fire1
       , noxiousSmoke
       ]
@@ -4447,13 +4459,6 @@ cosmicEvils =
     , cdKeywords = setFromList [Keyword.Peril]
     }
 
-blasphemousInvocation :: CardDef
-blasphemousInvocation = 
-  (treachery "12190" "Blasphemous Invocation" Cultists 2)
-    {
-      cdCardTraits = singleton Hex
-    }
-
 unspeakableTruths :: CardDef
 unspeakableTruths = 
   (treachery "12125" "Unspeakable Truths" EldritchLore 2)
@@ -4466,13 +4471,6 @@ forbiddenSecrets =
   (treachery "12126" "Forbidden Secrets" EldritchLore 2)
     {
       cdCardTraits = singleton Pact
-    }
-
-mutated1 :: CardDef
-mutated1 = 
-  (treachery "12131" "Mutated!" TheGathering 10)
-    {
-      cdCardTraits = singleton Mutation
     }
 
 extraplanarVisions :: CardDef
@@ -4501,4 +4499,102 @@ noxiousSmoke =
   (treachery "12130" "Noxious Smoke" TheGathering 10)
     {
       cdCardTraits = singleton Hazard
+    }
+
+mutated1 :: CardDef
+mutated1 = 
+  (treachery "12131" "Mutated!" TheGathering 10)
+    {
+      cdCardTraits = singleton Mutation
+    }
+
+arcaneLock :: CardDef
+arcaneLock =
+  (treachery "12157" "Arcane Lock" TheGathering 10)
+    {
+      cdCardTraits = setFromList [Hex, Obstacle]
+    }
+
+downpour :: CardDef
+downpour =
+  (treachery "12158" "Downpour" TheGathering 10)
+    {
+      cdCardTraits = singleton Hazard
+    }
+
+flashFlood :: CardDef
+flashFlood =
+  (treachery "12159" "Flash Flood" TheGathering 10)
+    {
+      cdCardTraits = singleton Hazard
+    }
+
+raisingSuspicions :: CardDef
+raisingSuspicions =
+  (treachery "12160" "Raising Suspicions" TheGathering 10)
+    {
+      cdCardTraits = singleton Blunder
+    }
+
+redHerring :: CardDef
+redHerring =
+  (treachery "12161" "Red Herring" TheGathering 10)
+    {
+      cdCardTraits = singleton Scheme
+    }
+
+aerialPursuit :: CardDef
+aerialPursuit =
+  (surge $ treachery "12163" "Aerial Pursuit" TheGathering 10)
+    {
+      cdCardTraits = singleton Scheme
+    }
+
+crossfire :: CardDef
+crossfire =
+  (treachery "12165" "Crossfire" TheGathering 10)
+    {
+      cdCardTraits = singleton Hazard
+    }
+
+blasphemousInvocation :: CardDef
+blasphemousInvocation = 
+  (treachery "12190" "Blasphemous Invocation" Cultists 2)
+    {
+      cdCardTraits = singleton Hex
+    }
+
+unnaturalDecay :: CardDef
+unnaturalDecay =
+  (treachery "12191" "Unnatural Decay" TheGathering 10)
+    {
+      cdCardTraits = singleton Curse
+    }
+
+putridVapors :: CardDef
+putridVapors =
+  (treachery "12192" "Putrid Vapors" TheGathering 10)
+    {
+      cdCardTraits = singleton Hazard
+    }
+
+languor :: CardDef
+languor =
+  (treachery "12193" "Languor" FlyingTerrors 2)
+    {
+      cdCardTraits = setFromList [Hex, Bane]
+    }
+
+dissonance :: CardDef
+dissonance =
+  (treachery "12194" "Dissonance" FlyingTerrors 2)
+    {
+      cdCardTraits = setFromList [Curse, Bane]
+    }
+
+torment :: CardDef
+torment =
+  (peril $ treachery "12195" "Torment" FlyingTerrors 2)
+    {
+      cdCardTraits = setFromList [Power, Bane]
     }

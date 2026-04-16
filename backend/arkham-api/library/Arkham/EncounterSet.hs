@@ -303,13 +303,18 @@ data EncounterSet
   | Bystanders
   | CosmicEvils
   | EldritchLore
-  | Fire1
   | Hallucinations
+  | Fire1
   | MadScience
-  | MiskatonicUniversity
+  | ArcaneLock
+  | BadWeather
+  | DeadEnds
   | Torment
   | GangsOfArkham
   | Cultists
+  | ReekingDecay
+  | FlyingTerrors
+  | MiskatonicUniversity
   | Test
   deriving stock (Show, Eq, Ord, Bounded, Enum, Data)
 
