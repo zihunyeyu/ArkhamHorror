@@ -4489,70 +4489,71 @@ wildCompulsion =
 
 fire1 :: CardDef
 fire1 = 
-  (treachery "12129" "Fire!" TheGathering 10)
+  (treachery "12129" "Fire!" Fire1 5)
     {
       cdCardTraits = singleton Hazard
     }
 
 noxiousSmoke :: CardDef
 noxiousSmoke = 
-  (treachery "12130" "Noxious Smoke" TheGathering 10)
+  (treachery "12130" "Noxious Smoke" Fire1 2)
     {
       cdCardTraits = singleton Hazard
     }
 
 mutated1 :: CardDef
 mutated1 = 
-  (treachery "12131" "Mutated!" TheGathering 10)
+  (treachery "12131" "Mutated!" MadScience 2)
     {
       cdCardTraits = singleton Mutation
     }
 
 arcaneLock :: CardDef
 arcaneLock =
-  (treachery "12157" "Arcane Lock" TheGathering 10)
+  (treachery "12157" "Arcane Lock" ArcaneLock 2)
     {
       cdCardTraits = setFromList [Hex, Obstacle]
     }
 
 downpour :: CardDef
 downpour =
-  (treachery "12158" "Downpour" TheGathering 10)
+  (treachery "12158" "Downpour" BadWeather 2)
     {
       cdCardTraits = singleton Hazard
     }
 
 flashFlood :: CardDef
 flashFlood =
-  (treachery "12159" "Flash Flood" TheGathering 10)
+  (treachery "12159" "Flash Flood" BadWeather 2)
     {
       cdCardTraits = singleton Hazard
     }
 
 raisingSuspicions :: CardDef
 raisingSuspicions =
-  (treachery "12160" "Raising Suspicions" TheGathering 10)
+  (treachery "12160" "Raising Suspicions" DeadEnds 2)
     {
       cdCardTraits = singleton Blunder
     }
 
 redHerring :: CardDef
 redHerring =
-  (treachery "12161" "Red Herring" TheGathering 10)
+  (treachery "12161" "Red Herring" DeadEnds 2)
     {
       cdCardTraits = singleton Scheme
     }
 
 aerialPursuit :: CardDef
 aerialPursuit =
-  (surge $ treachery "12163" "Aerial Pursuit" TheGathering 10)
-    {
-      cdCardTraits = singleton Scheme
-    }
+  surge
+    $ (treachery "12163" "Aerial Pursuit" Torment 2)
+      {
+        cdCardTraits = singleton Scheme
+      }
 
 crossfire :: CardDef
 crossfire =
-  (treachery "12165" "Crossfire" TheGathering 10)
+  (treachery "12165" "Crossfire" GangsOfArkham 2)
     {
       cdCardTraits = singleton Hazard
     }
@@ -4566,14 +4567,14 @@ blasphemousInvocation =
 
 unnaturalDecay :: CardDef
 unnaturalDecay =
-  (treachery "12191" "Unnatural Decay" TheGathering 10)
+  (treachery "12191" "Unnatural Decay" ReekingDecay 2)
     {
       cdCardTraits = singleton Curse
     }
 
 putridVapors :: CardDef
 putridVapors =
-  (treachery "12192" "Putrid Vapors" TheGathering 10)
+  (treachery "12192" "Putrid Vapors" ReekingDecay 2)
     {
       cdCardTraits = singleton Hazard
     }
