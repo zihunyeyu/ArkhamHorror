@@ -787,4 +787,9 @@ allEnemies =
       , --- Cultists
         SomeEnemyCard zealot
       , SomeEnemyCard darkMagician
+      , --- Queen of Ash
+        SomeEnemyCard queensKnight
+      , SomeEnemyCard heraldOfFlame
+      , SomeEnemyCard elokossFaintEmbers
+      , SomeEnemyCard elokossMotherOfFlame
       ]

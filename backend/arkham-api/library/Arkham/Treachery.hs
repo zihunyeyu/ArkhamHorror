@@ -959,5 +959,7 @@ allTreacheries =
       , --- Flying Terrors
         SomeTreacheryCard languor
       , SomeTreacheryCard dissonance
-      , SomeTreacheryCard torment
+      , SomeTreacheryCard torment 
+      , SomeTreacheryCard markOfElokoss
+      , SomeTreacheryCard ashenRebirth
       ]

@@ -7,7 +7,7 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig(({ mode }) => {
   // Docker 环境使用 web 服务名访问后端，本地开发使用 localhost
   const isDocker = process.env.API_TARGET?.includes('docker') || false;
-  const apiTarget = isDocker ? 'http://web:3001' : 'http://127.0.0.1:3001';
+  const apiTarget = isDocker ? 'http://web:3002' : 'http://127.0.0.1:3002';
   
   return {
     plugins: [vue()],

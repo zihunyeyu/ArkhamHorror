@@ -554,6 +554,8 @@ allEncounterEnemyCards =
       , youngPsychopath
       , zadokAllenDrunkAndDisorderly
       , servantOfFlameRagingFury
+      , servantOfFlameOnTheRun
+      , servantOfFlameAWillingSacrifice
       , cantorOfFlame
       , hellhound
       , bystander
@@ -562,6 +564,10 @@ allEncounterEnemyCards =
       , rogueGangster
       , zealot
       , darkMagician
+      , queensKnight
+      , heraldOfFlame
+      , elokossFaintEmbers
+      , elokossMotherOfFlame
       ]
 
 allSpecialEnemyCards :: Map CardCode CardDef
@@ -4561,12 +4567,33 @@ bloodDrinker =
 
 servantOfFlameRagingFury :: CardDef
 servantOfFlameRagingFury = 
-  (enemy "12114" "Servant of Flame" SpreadingFlames 1)
-    {
-      cdCardTraits = setFromList [Humanoid, Elite],
-      cdKeywords = setFromList [Keyword.Hunter, Keyword.Retaliate],
-      cdVictoryPoints = Just 2
-    }
+  unique
+    $ (enemy "12114" ("Servant of Flame" <:> "Raging Fury") SpreadingFlames 1)
+      {
+        cdCardTraits = setFromList [Humanoid, Elite],
+        cdKeywords = setFromList [Keyword.Hunter, Keyword.Retaliate],
+        cdVictoryPoints = Just 2
+      }
+
+servantOfFlameOnTheRun :: CardDef
+servantOfFlameOnTheRun = 
+  unique
+    $ (enemy "12114" ("Servant of Flame" <:> "On the Run") SpreadingFlames 1)
+      {
+        cdCardTraits = setFromList [Humanoid, Cultist, Elite],
+        cdKeywords = setFromList [Keyword.Elusive, Keyword.Hunter, Keyword.Retaliate],
+        cdVictoryPoints = Just 1
+      }
+
+servantOfFlameAWillingSacrifice :: CardDef
+servantOfFlameAWillingSacrifice = 
+  unique
+    $ (enemy "12114" ("Servant of Flame" <:> "A Willing Sacrifice") SpreadingFlames 1)
+      {
+        cdCardTraits = setFromList [Humanoid, Cultist, Elite],
+        cdKeywords = setFromList [Keyword.Hunter, Keyword.Retaliate],
+        cdVictoryPoints = Just 2
+      }
 
 cantorOfFlame :: CardDef
 cantorOfFlame = 
@@ -4631,3 +4658,103 @@ darkMagician =
       cdKeywords = setFromList [Keyword.Hunter, Keyword.Retaliate],
       cdVictoryPoints = Just 1
     }
+
+davidRenfieldDisillusionedEschatologist :: CardDef
+davidRenfieldDisillusionedEschatologist = 
+  unique
+    $ (enemy "12139" ("David Renfield" <:> "Disillusioned Eschatologist") PeopleOfArkham 1)
+      {
+        cdCardTraits = setFromList [Humanoid, SilverTwilight, Elite],
+        cdKeywords = setFromList [Keyword.Aloof],
+        cdVictoryPoints = Just 1
+      }
+  
+corneliaAkelyExhaustedSupervisor :: CardDef
+corneliaAkelyExhaustedSupervisor = 
+  unique
+    $ (enemy "12140" ("Cornelia Akely" <:> "Exhausted Supervisor") PeopleOfArkham 1)
+      {
+        cdCardTraits = setFromList [Humanoid, Worker, Elite],
+        cdKeywords = setFromList [Keyword.Alert],
+        cdVictoryPoints = Just 1
+      }
+
+naomiOBannionRunsThisTown :: CardDef
+naomiOBannionRunsThisTown = 
+  unique
+    $ (enemy "12141" ("Naomi O'Bannion" <:> "Runs This Town") PeopleOfArkham 1)
+      {
+        cdCardTraits = setFromList [Humanoid, Syndicate, Elite],
+        cdKeywords = setFromList [Keyword.Retaliate],
+        cdVictoryPoints = Just 1
+      }
+
+sgtEarlMonroeDirtyCop :: CardDef
+sgtEarlMonroeDirtyCop = 
+  unique
+    $ (enemy "12142" ("Sgt. Earl Monroe" <:> "Dirty Cop") PeopleOfArkham 1)
+      {
+        cdCardTraits = setFromList [Humanoid, Police, Elite],
+        cdKeywords = setFromList [Keyword.Elusive],
+        cdVictoryPoints = Just 1
+      }
+
+abigailForemanWaryLibrarian :: CardDef
+abigailForemanWaryLibrarian = 
+  unique
+    $ (enemy "12143" ("Abigail Foreman" <:> "Wary Librarian") PeopleOfArkham 1)
+      {
+        cdCardTraits = setFromList [Humanoid, Miskatonic, Elite],
+        cdKeywords = setFromList [Keyword.Aloof],
+        cdVictoryPoints = Just 1
+      }
+
+margaretLiuBeguilingLoungeSinger :: CardDef
+margaretLiuBeguilingLoungeSinger = 
+  unique
+    $ (enemy "12143" ("Margaret Liu" <:> "Beguiling Lounge Singer") PeopleOfArkham 1)
+      {
+        cdCardTraits = setFromList [Humanoid, Socialite, Elite],
+        cdKeywords = setFromList [Keyword.Aloof],
+        cdVictoryPoints = Just 1
+      }
+
+queensKnight :: CardDef
+queensKnight = 
+  unique
+    $ (enemy "12177" "Queen`s Knight" TheGathering 2)
+      {
+        cdCardTraits = setFromList [Humanoid, Cultist],
+        cdKeywords = setFromList [Keyword.Hunter],
+        cdVictoryPoints = Just 1
+      }
+
+heraldOfFlame :: CardDef
+heraldOfFlame = 
+  unique
+    $ (enemy "12178" "Herald Of Flame" TheGathering 2)
+      {
+        cdCardTraits = setFromList [Monster],
+        cdKeywords = setFromList [Keyword.Hunter],
+        cdVictoryPoints = Just 1
+      }
+
+elokossFaintEmbers :: CardDef
+elokossFaintEmbers = 
+  unique
+    $ (enemy "12179a" ("Elokoss" <:> "Faint Embers") TheGathering 2)
+      {
+        cdCardTraits = setFromList [Ancient, Flora, Elite],
+        cdKeywords = setFromList [Keyword.Massive, Keyword.Retaliate],
+        cdVictoryPoints = Just 5
+      }
+
+elokossMotherOfFlame :: CardDef
+elokossMotherOfFlame = 
+  unique
+    $ (enemy "12179b" ("Elokoss" <:> "Mother of Flame") TheGathering 2)
+      {
+        cdCardTraits = setFromList [Ancient, Flora, Elite],
+        cdKeywords = setFromList [Keyword.Hunter, Keyword.Massive, Keyword.Retaliate],
+        cdVictoryPoints = Just 5
+      }

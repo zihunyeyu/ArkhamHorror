@@ -190,6 +190,7 @@ allPlayerTreacheryCards =
       , unbrokenWeb
       , calledToGuinee
       , hemophobia
+      , markOfElokoss
       ]
 
 allEncounterTreacheryCards :: Map CardCode CardDef
@@ -693,6 +694,7 @@ allEncounterTreacheryCards =
       , putridVapors
       , fire1
       , noxiousSmoke
+      , ashenRebirth
       ]
 
 coverUp :: CardDef
@@ -4598,4 +4600,18 @@ torment =
   (peril $ treachery "12195" "Torment" FlyingTerrors 2)
     {
       cdCardTraits = setFromList [Power, Bane]
+    }
+
+markOfElokoss :: CardDef
+markOfElokoss =
+  (weakness "12137" "Mark of Elokoss")
+    { 
+      cdCardTraits = singleton Curse
+    }
+
+ashenRebirth :: CardDef
+ashenRebirth = 
+  (treachery "12176" "Ashen Rebirth" TheGathering 10)
+    {
+      cdCardTraits = singleton Power
     }

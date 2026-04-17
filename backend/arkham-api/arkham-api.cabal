@@ -2051,6 +2051,8 @@ library
       Arkham.Enemy.Cards.ElderThingScavenger
       Arkham.Enemy.Cards.ElisabettaMagro
       Arkham.Enemy.Cards.EliyahAshevakDogHandler
+      Arkham.Enemy.Cards.ElokossFaintEmbers
+      Arkham.Enemy.Cards.ElokossMotherOfFlame
       Arkham.Enemy.Cards.EmergentMonstrosity
       Arkham.Enemy.Cards.EmergingDeepOne
       Arkham.Enemy.Cards.EmissaryFromYuggoth
@@ -2099,6 +2101,7 @@ library
       Arkham.Enemy.Cards.HasturTheTatteredKing
       Arkham.Enemy.Cards.Hellhound
       Arkham.Enemy.Cards.HenryDeveauAlejandrosKidnapper
+      Arkham.Enemy.Cards.HeraldOfFlame
       Arkham.Enemy.Cards.Heretic_A
       Arkham.Enemy.Cards.Heretic_C
       Arkham.Enemy.Cards.Heretic_E
@@ -2240,6 +2243,7 @@ library
       Arkham.Enemy.Cards.ProtoplasmicMass
       Arkham.Enemy.Cards.ProtoplasmicReassembler
       Arkham.Enemy.Cards.PursuingMotorcar
+      Arkham.Enemy.Cards.QueensKnight
       Arkham.Enemy.Cards.RampagingShoggoth
       Arkham.Enemy.Cards.RavagerFromTheDeep
       Arkham.Enemy.Cards.RavenousGhoul
@@ -2282,6 +2286,8 @@ library
       Arkham.Enemy.Cards.SerpentOfTenochtitlan
       Arkham.Enemy.Cards.SerpentsOfYig
       Arkham.Enemy.Cards.SerpentsOfYigAdvanced
+      Arkham.Enemy.Cards.ServantOfFlameAWillingSacrifice
+      Arkham.Enemy.Cards.ServantOfFlameOnTheRun
       Arkham.Enemy.Cards.ServantOfFlameRagingFury
       Arkham.Enemy.Cards.ServantOfManyMouths
       Arkham.Enemy.Cards.ServantOfTheLurker
@@ -4850,6 +4856,7 @@ library
       Arkham.Treachery.Cards.ArmInjury
       Arkham.Treachery.Cards.ArousingSuspicions
       Arkham.Treachery.Cards.ArrowsFromTheTrees
+      Arkham.Treachery.Cards.AshenRebirth
       Arkham.Treachery.Cards.ATearInTime
       Arkham.Treachery.Cards.AttractingAttention
       Arkham.Treachery.Cards.Atychiphobia
@@ -5137,6 +5144,7 @@ library
       Arkham.Treachery.Cards.Maligned
       Arkham.Treachery.Cards.MarkedByTheSign
       Arkham.Treachery.Cards.MarkedForDeath
+      Arkham.Treachery.Cards.MarkOfElokoss
       Arkham.Treachery.Cards.MarkOfTheOrder
       Arkham.Treachery.Cards.MaskedHorrors
       Arkham.Treachery.Cards.MaskOfUmordhoth
