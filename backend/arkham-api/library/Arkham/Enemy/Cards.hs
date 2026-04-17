@@ -135,6 +135,7 @@ allEncounterEnemyCards =
       , beingsOfIb
       , benignElderThing
       , billyCooper
+      , blackAmanita
       , boaConstrictor
       , bogGator
       , boundNightgaunt
@@ -164,12 +165,14 @@ allEncounterEnemyCards =
       , cerenerianDeepOne
       , cloverClubPitBoss
       , cnidathqua
+      , cochlealStag
       , conglomerationOfSpheres
       , conspicuousStaff
       , constanceDumaine
       , constrictingElderThing
       , corpseDweller
       , corpseHungryGhoul
+      , corpseLichen
       , corpseTaker
       , corruptedOrderly
       , corsairOfLeng
@@ -239,6 +242,7 @@ allEncounterEnemyCards =
       , fangOfYig
       , featheredSerpent
       , fleshEater
+      , forestWatcher
       , forgottenShoggoth
       , formlessSpawn
       , fortunesDaggerA
@@ -389,6 +393,7 @@ allEncounterEnemyCards =
       , pitViper
       , pitWarden
       , pitchSpider
+      , poisonblossom
       , poleman
       , poltergeist
       , possessedExtra_19
@@ -3486,6 +3491,7 @@ ursineHybridGlowingAbomination =
       { cdCardTraits = setFromList [Creature, Monster, Mutated, Elite]
       , cdKeywords = setFromList [Keyword.Hunter, Keyword.Retaliate]
       , cdUnique = True
+      , cdVictoryPoints = Just 2
       }
 
 stalkingHybrid :: CardDef
@@ -3501,6 +3507,52 @@ crystalParasite =
     { cdCardTraits = setFromList [Monster, Insect, Blight]
     , cdKeywords = setFromList [Keyword.Hunter, Keyword.Retaliate]
     , cdVictoryPoints = Just 1
+    }
+
+poisonblossom :: CardDef
+poisonblossom =
+  (enemy "10732" "Poisonblossom" TheForest 2)
+    { cdCardTraits = setFromList [Creature, Flora, Mutated]
+    , cdKeywords = setFromList [Keyword.Retaliate]
+    }
+
+forestWatcher :: CardDef
+forestWatcher =
+  (enemy "10733" "Forest Watcher" TheForest 2)
+    { cdCardTraits = setFromList [Creature, Flora, Mutated]
+    , cdKeywords =
+        setFromList [Keyword.Aloof, Keyword.ScenarioModifierKeyword "time" (String "Night") Keyword.Elusive]
+    }
+
+cochlealStag :: CardDef
+cochlealStag =
+  (enemy "10734" "Cochleal Stag" TheForest 1)
+    { cdCardTraits = setFromList [Creature, Monster, Flora, Mutated]
+    , cdKeywords =
+        setFromList
+          [Keyword.Elusive, Keyword.ScenarioModifierKeyword "time" (String "Night") Keyword.Hunter]
+    }
+
+blackAmanita :: CardDef
+blackAmanita =
+  (enemy "10738" "Black Amanita" Myconids 2)
+    { cdCardTraits = setFromList [Creature, Monster, Flora, Mutated]
+    , cdKeywords =
+        setFromList
+          [ Keyword.ScenarioModifierKeyword "time" (String "Day") Keyword.Aloof
+          , Keyword.ScenarioModifierKeyword "time" (String "Night") Keyword.Massive
+          ]
+    }
+
+corpseLichen :: CardDef
+corpseLichen =
+  (enemy "10739" "Corpse Lichen" Myconids 1)
+    { cdCardTraits = setFromList [Humanoid, Monster, Flora, Mutated]
+    , cdKeywords =
+        setFromList
+          [ Keyword.ScenarioModifierKeyword "time" (String "Night") Keyword.Hunter
+          , Keyword.ScenarioModifierKeyword "time" (String "Night") Keyword.Alert
+          ]
     }
 
 blackChamberOperative :: CardDef

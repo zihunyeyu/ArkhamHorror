@@ -14,6 +14,9 @@
   "label": {
     "calcification": {
       "pay": "Take 1 direct damage for this test to automatically succeed"
+    },
+    "psychotropicSpores": {
+      "pay": "Take 1 direct horror for this test to automatically succeed"
     }
   },
   "prologue": {
@@ -221,6 +224,12 @@
   },
   "key": {
     "motherRachelShowedTheWay": "Mother Rachel Showed the Way",
+<<<<<<< HEAD
+=======
+    "bertieWasRescued": "Bertie Was Rescued",
+    "bertieWasLostInTheWoods": "Bertie Was Lost in the Woods",
+    "theBearWasWounded": "The Bear Was Wounded",
+>>>>>>> upstream/main
     "finishedTheirMeal": "Finished Their Meal",
     "motherRachelRelationshipLevel": "Mother Rachel Relationship Level",
     "leahAtwoodRelationshipLevel": "Leah Atwood Relationship Level",

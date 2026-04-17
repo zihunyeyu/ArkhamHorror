@@ -586,6 +586,13 @@ allEnemies =
       , SomeEnemyCard stalkingHybrid
       , --- Horrors in the Rock [fhv]
         SomeEnemyCard crystalParasite
+      , --- The Forest [fhv]
+        SomeEnemyCard poisonblossom
+      , SomeEnemyCard forestWatcher
+      , SomeEnemyCard cochlealStag
+      , --- Myconids [fhv]
+        SomeEnemyCard blackAmanita
+      , SomeEnemyCard corpseLichen
       , -- Core 2026
         --- signature [core2026]
         SomeEnemyCard blackChamberOperative

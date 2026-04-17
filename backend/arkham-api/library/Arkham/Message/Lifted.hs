@@ -553,6 +553,11 @@ kill (toSource -> source) iid = do
   push $ InvestigatorKilled source iid
   push CheckForRemainingInvestigators
 
+defeat :: (Sourceable source, ReverseQueue m) => source -> InvestigatorId -> m ()
+defeat (toSource -> source) iid = do
+  push $ InvestigatorWhenDefeated source iid
+  push CheckForRemainingInvestigators
+
 drivenInsane :: ReverseQueue m => InvestigatorId -> m ()
 drivenInsane iid = do
   push $ DrivenInsane iid
@@ -3948,6 +3953,13 @@ priority body = do
   msgs <- capture body
   push $ Priority $ Run msgs
 
+-- Just a reminder that this is new and potentially dangerous, we should
+-- consider only cases where messages will look the same roughly.
+simultaneously :: ReverseQueue m => QueueT Message m () -> m ()
+simultaneously body = do
+  msgs <- capture body
+  push $ Simultaneously msgs
+
 flipCluesToDoom :: (ReverseQueue m, Targetable target) => target -> Int -> m ()
 flipCluesToDoom target n = push $ FlipClues (toTarget target) n
 
@@ -4046,3 +4058,9 @@ ifEnemy enemy matcher body = do
 
 clearAbilityUse :: ReverseQueue m => AbilityRef -> m ()
 clearAbilityUse = push . ClearAbilityUse
+
+removeActDeck :: ReverseQueue m => m ()
+removeActDeck = push $ SetCurrentActDeck 1 []
+
+setCurrentAgendaDeck :: (ReverseQueue m) => [Card] -> m ()
+setCurrentAgendaDeck = push . SetCurrentAgendaDeck 1

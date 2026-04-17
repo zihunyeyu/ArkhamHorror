@@ -1171,6 +1171,7 @@ h2 {
   img {
     border: 1px solid var(--select);
     border-radius: 5px;
+    height: auto;
   }
 
   .card {
@@ -1192,6 +1193,7 @@ h2 {
   margin: 10px;
   img {
     border-radius: 5px;
+    height: auto;
 
     &.Reversed {
       transform: rotateZ(180deg);
@@ -1202,6 +1204,10 @@ h2 {
         transform: translate(0, -12px);
       }
     }
+  }
+
+  a {
+    display: inline-block;
   }
 
   a > img {

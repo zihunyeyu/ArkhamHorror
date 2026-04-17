@@ -1953,6 +1953,7 @@ library
       Arkham.Enemy.Cards.BenignElderThing
       Arkham.Enemy.Cards.BiancaDieKatz
       Arkham.Enemy.Cards.BillyCooper
+      Arkham.Enemy.Cards.BlackAmanita
       Arkham.Enemy.Cards.BlackChamberOperative
       Arkham.Enemy.Cards.BloodDrinker
       Arkham.Enemy.Cards.BoaConstrictor
@@ -1988,12 +1989,14 @@ library
       Arkham.Enemy.Cards.CerenerianDeepOne
       Arkham.Enemy.Cards.CloverClubPitBoss
       Arkham.Enemy.Cards.Cnidathqua
+      Arkham.Enemy.Cards.CochlealStag
       Arkham.Enemy.Cards.ConglomerationOfSpheres
       Arkham.Enemy.Cards.ConspicuousStaff
       Arkham.Enemy.Cards.ConstanceDumaine
       Arkham.Enemy.Cards.ConstrictingElderThing
       Arkham.Enemy.Cards.CorpseDweller
       Arkham.Enemy.Cards.CorpseHungryGhoul
+      Arkham.Enemy.Cards.CorpseLichen
       Arkham.Enemy.Cards.CorpseTaker
       Arkham.Enemy.Cards.CorruptedOrderly
       Arkham.Enemy.Cards.CorsairOfLeng
@@ -2067,6 +2070,7 @@ library
       Arkham.Enemy.Cards.FelineHybrid
       Arkham.Enemy.Cards.FleshEater
       Arkham.Enemy.Cards.FlyingPolyp
+      Arkham.Enemy.Cards.ForestWatcher
       Arkham.Enemy.Cards.ForgottenShoggoth
       Arkham.Enemy.Cards.FormlessSpawn
       Arkham.Enemy.Cards.FortunesDaggerA
@@ -2228,6 +2232,7 @@ library
       Arkham.Enemy.Cards.PitchSpider
       Arkham.Enemy.Cards.PitViper
       Arkham.Enemy.Cards.PitWarden
+      Arkham.Enemy.Cards.Poisonblossom
       Arkham.Enemy.Cards.Poleman
       Arkham.Enemy.Cards.Poltergeist
       Arkham.Enemy.Cards.PossessedExtra_19
@@ -4884,6 +4889,7 @@ library
       Arkham.Treachery.Cards.Bloodlust
       Arkham.Treachery.Cards.BloodOnYourHands
       Arkham.Treachery.Cards.BloodthirstySpirits
+      Arkham.Treachery.Cards.Bloom
       Arkham.Treachery.Cards.BodySnatched
       Arkham.Treachery.Cards.BoughtInBlood
       Arkham.Treachery.Cards.BoundInRed
@@ -4902,6 +4908,7 @@ library
       Arkham.Treachery.Cards.CalledToGuinee
       Arkham.Treachery.Cards.CallingCard
       Arkham.Treachery.Cards.CallOfTheUnknown
+      Arkham.Treachery.Cards.CallOfTheWild
       Arkham.Treachery.Cards.CallToOrder
       Arkham.Treachery.Cards.CaptivatingGleam
       Arkham.Treachery.Cards.CaptiveMind
@@ -5222,6 +5229,7 @@ library
       Arkham.Treachery.Cards.PsychopompsSong
       Arkham.Treachery.Cards.PsychopompsSongUnionAndDisillusion
       Arkham.Treachery.Cards.Psychosis
+      Arkham.Treachery.Cards.PsychotropicSpores
       Arkham.Treachery.Cards.PulledBack
       Arkham.Treachery.Cards.PulledByTheStars
       Arkham.Treachery.Cards.Punishment
@@ -5409,6 +5417,7 @@ library
       Arkham.Treachery.Cards.VoiceOfTheMessenger
       Arkham.Treachery.Cards.VoiceOfTrunembra
       Arkham.Treachery.Cards.VortexOfTime
+      Arkham.Treachery.Cards.WallOfThorns
       Arkham.Treachery.Cards.WallsClosingIn
       Arkham.Treachery.Cards.WardOfPreservation
       Arkham.Treachery.Cards.WarpedReality
